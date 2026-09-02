@@ -5,8 +5,6 @@
 [![Architecture](https://img.shields.io/badge/Architecture-Scalable-4CAF50?style=for-the-badge)](#)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](#)
 
-🖼️ Live Demo https://mohdali644.github.io/EverBuy/
-
 > An immersive, high-performance web platform engineered with state-of-the-art UI/UX principles. EverBuy merges complex global state management with fluid, responsive design to create a dynamic digital shopping environment.
 
 ---
