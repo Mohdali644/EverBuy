@@ -154,9 +154,6 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                           value={query}
                           onChange={(e) => setQuery(e.target.value)}
                       />
-                      <div className="hidden lg:flex absolute right-3 items-center justify-center gap-1 bg-slate-100 border border-slate-200 rounded-md px-2 py-0.5 text-slate-500 text-[0.7rem] font-medium shadow-sm pointer-events-none group-focus-within:opacity-0 transition-opacity">
-                        <span>⌘</span><span>K</span>
-                      </div>
                     </div>
 
                     <button className="w-[42px] h-[42px] shrink-0 rounded-full border-none bg-[#ff9900] hover:bg-[#e38800] text-white text-[0.9rem] cursor-pointer flex items-center justify-center transition-all duration-300 shadow-sm">
