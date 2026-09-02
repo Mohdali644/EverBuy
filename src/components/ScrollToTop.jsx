@@ -1,0 +1,13 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+export default function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Forces the window to the absolute top left instantly
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null; // This component renders nothing to the screen
+}
