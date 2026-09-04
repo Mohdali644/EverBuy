@@ -112,13 +112,13 @@ export default function CategoryPage() {
       <div className="absolute top-[120px] left-6 md:left-12 z-10">
         <button 
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 shadow-sm rounded-full text-sm font-bold text-gray-600 hover:text-[#f26a21] hover:shadow-md hover:-translate-y-0.5 transition-all"
+          className="fixed top-32 left-6 z-50 flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 shadow-sm rounded-full text-sm font-bold text-gray-600 hover:text-[#f26a21] hover:shadow-md hover:-translate-y-0.5 transition-all"
         >
           <i className="fa-solid fa-arrow-left"></i> Back to Home
         </button>
       </div>
 
-      <section className="py-[120px] px-6 text-center bg-[#f8f9fa]">
+      <section className="py-[90px] px-6 rounded-3xl mt-5 text-center bg-[#f8f9fa]">
         <h1 className="text-[2.5rem] text-[#111] font-bold mb-2">{category.title}</h1>
         <p className="text-gray-600">Explore top-rated essentials and premium selections.</p>
       </section>
