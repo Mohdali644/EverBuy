@@ -58,7 +58,7 @@ export default function GlobalModals({ locOpen, setLocOpen, signInOpen, setSignI
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-[30000] flex justify-center items-center" onClick={() => setShowExit(false)}>
           <div className="bg-gradient-to-br from-[#131a22] to-[#232f3e] p-12 rounded-3xl w-[90%] max-w-[500px] text-center text-white border border-white/10 shadow-[0_25px_50px_rgba(242,106,33,0.2)]" onClick={e => e.stopPropagation()}>
             <h2 className="text-[2.2rem] text-[#f26a21] font-bold mb-2">Wait! Don't leave yet.</h2>
-            <p className="text-[1.1rem] text-gray-300 mb-6">Complete your order today and take an extra 15% off your entire manifest.</p>
+            <p className="text-[1.1rem] text-gray-300 mb-6">Complete your order today and take an extra 15% off on your entire manifest.</p>
             <div onClick={(e) => { navigator.clipboard.writeText("EVERBUY15"); e.target.innerText = "COPIED!"; e.target.style.background = "#4BB543"; e.target.style.borderColor = "#4BB543"; }} className="bg-white/10 p-4 border-2 border-dashed border-[#f26a21] text-2xl tracking-[2px] rounded-lg cursor-pointer transition-colors">EVERBUY15</div>
             <button onClick={() => setShowExit(false)} className="w-full mt-6 bg-white hover:bg-gray-200 text-black font-bold py-4 rounded-xl transition-colors">Continue Shopping</button>
           </div>
