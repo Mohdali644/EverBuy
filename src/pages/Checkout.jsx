@@ -35,7 +35,7 @@ export default function Checkout() {
         {/* Restored & Enhanced Return Button */}
         <button 
           onClick={() => navigate('/')}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex items-center gap-2 text-white hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/20 hover:bg-white/30 px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border border-white/30 shadow-md"
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex items-center gap-2 text-white hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/20 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border border-white/30 shadow-md"
         >
           <i className="fa-solid fa-arrow-left text-sm md:text-base"></i> <span className="hidden sm:inline">Return to Store</span>
         </button>
