@@ -244,7 +244,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                   </div>
                   <div className="hidden sm:flex flex-col justify-center">
                     <span className="text-[0.75rem] text-slate-400 font-medium group-hover/cart:text-white tracking-wide transition-colors">Manifest</span>
-                    <span className="text-[0.95rem] font-bold tracking-tight text-[#ff9900] tracking-wide leading-none">${cartTotal ? cartTotal.toFixed(2) : "0.00"}</span>
+                    <span className="text-[0.95rem] font-bold text-[#ff9900] tracking-wide leading-none">${cartTotal ? cartTotal.toFixed(2) : "0.00"}</span>
                   </div>
               </div>
           </nav>
@@ -257,7 +257,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
               >
                   <i className="fa-solid fa-bars"></i> All
               </button>
-              <div className="flex gap-3 hidden md:flex">
+              <div className="gap-3 hidden md:flex">
                   <button className="px-3 py-1 tracking-wide rounded-full text-slate-300 hover:text-white transition-all duration-300 hover:bg-white/10 whitespace-nowrap focus:outline-none" onClick={() => setInfoOpen("Today's Deals")}>Today's Deals</button>
                   <button className="px-3 py-1 tracking-wide rounded-full text-slate-300 hover:text-white transition-all duration-300 hover:bg-white/10 whitespace-nowrap focus:outline-none" onClick={() => setInfoOpen("Customer Service")}>Customer Service</button>
                   <button className="px-3 py-1 tracking-wide rounded-full text-slate-300 hover:text-white transition-all duration-300 hover:bg-white/10 whitespace-nowrap focus:outline-none" onClick={() => setInfoOpen("Registry")}>Registry</button>
