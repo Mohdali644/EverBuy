@@ -6,6 +6,20 @@ export default function Home() {
   const { addToCart, cartIconRef } = useCart();
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState('');
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  const handleInitialize = (e) => {
+    e.preventDefault(); 
+    if (email.trim() !== '' && email.includes('@')) {
+      setIsInitialized(true);
+      setTimeout(() => {
+        setIsInitialized(false);
+        setEmail('');
+      }, 2000);
+    }
+  };
+
   // --- 1. HERO CAROUSEL LOGIC ---
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
@@ -512,30 +526,45 @@ export default function Home() {
           
           {/* Glowing Neon Input Field - PERFECT PILL SHAPE */}
           <div className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto relative group">
-            {/* The outer glowing border effect - Swapped to rounded-full */}
+            {/* The outer glowing border effect */}
             <div className="absolute -inset-1.5 bg-gradient-to-r from-[#ff9900] via-[#ff3300] to-[#ff9900] rounded-full blur-lg opacity-30 group-focus-within:opacity-80 group-hover:opacity-60 transition duration-500 animate-shimmer bg-[length:200%_auto]"></div>
             
-            {/* The main container - Swapped to rounded-full */}
-            <div className="relative flex w-full bg-[#0f172a] rounded-full p-2 shadow-2xl border border-white/10 backdrop-blur-xl">
+            {/* The main form container */}
+            <form onSubmit={handleInitialize} className="relative flex w-full bg-[#0f172a] rounded-full p-2 shadow-2xl border border-white/10 backdrop-blur-xl">
               
-              {/* Increased left padding so the icon doesn't hit the curved edge */}
               <div className="pl-6 flex items-center justify-center text-slate-500">
                 <i className="fa-solid fa-envelope"></i>
               </div>
               
               <input 
                 type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isInitialized}
+                required
                 placeholder="Enter system email..." 
-                className="flex-grow mr-2 ml-2 bg-transparent border-none outline-none px-4 text-white font-medium placeholder:text-slate-500 p-2 m-0.5 rounded-3xl text-lg w-full"
+                className="flex-grow mr-2 ml-2 bg-transparent border-none outline-none px-4 text-white font-medium placeholder:text-slate-500 p-2 m-0.5 rounded-3xl text-lg w-full disabled:opacity-50"
               />
               
-              {/* The submit button - Swapped to rounded-full */}
-              <button className="bg-white hover:bg-slate-200 text-slate-900 px-8 py-4 rounded-full font-black transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95 shrink-0">
-                Initialize <i className="fa-solid fa-bolt text-[#ff9900]"></i>
+              <button 
+                type="submit"
+                disabled={isInitialized}
+                className={`px-8 py-4 rounded-full font-black transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center gap-2 shrink-0 ${
+                  isInitialized 
+                    ? 'bg-emerald-500 text-white cursor-default' 
+                    : 'bg-white hover:bg-slate-200 text-slate-900 hover:scale-105 active:scale-95'
+                }`}
+              >
+                {isInitialized ? (
+                  <>Initialized <i className="fa-solid fa-check text-white"></i></>
+                ) : (
+                  <>Initialize <i className="fa-solid fa-bolt text-[#ff9900]"></i></>
+                )}
               </button>
-            </div>
+            </form>
           </div>
           
+          {/* The missing closing tags and missing paragraph are restored here */}
           <p className="text-xs text-slate-500 mt-6 font-medium">By initializing, you agree to our <span className="text-white underline cursor-pointer hover:text-[#ff9900]">Terms of Service</span> and <span className="text-white underline cursor-pointer hover:text-[#ff9900]">Privacy Protocol</span>.</p>
         </div>
       </section>
