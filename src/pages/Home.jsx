@@ -84,7 +84,18 @@ export default function Home() {
   };
 
   const handleLeave = (e) => {
-    e.currentTarget.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+    const card = e.currentTarget;
+    
+    // 1. Temporarily turn on a smooth CSS transition
+    card.style.transition = "transform 0.3s ease-out"; 
+    
+    // 2. Snap the card back to flat
+    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+    
+    // 3. Turn the CSS transition back off after 300ms so it doesn't stutter on the next hover
+    setTimeout(() => {
+      card.style.transition = "";
+    }, 300);
   };
 
   // --- DATA ---
@@ -145,7 +156,7 @@ export default function Home() {
       <div 
         onMouseMove={handleTilt}
         onMouseLeave={handleLeave}
-        className="relative bg-white rounded-[20px] p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-black/5 transition-transform duration-200 ease-out flex flex-col group cursor-pointer"
+        className="relative bg-white rounded-[20px] p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-black/5 ease-out flex flex-col group cursor-pointer"
       >
         {product.badge && (
           <div className={`absolute top-6 left-6 z-10 px-3 py-1.5 rounded-full text-[0.75rem] font-extrabold uppercase tracking-wider text-white ${product.badgeType === 'hot' ? 'bg-gradient-to-br from-red-500 to-orange-500 shadow-[0_4px_10px_rgba(239,68,68,0.3)]' : 'bg-gradient-to-br from-indigo-500 to-sky-500 shadow-[0_4px_10px_rgba(99,102,241,0.3)]'}`}>
@@ -305,7 +316,7 @@ export default function Home() {
               { id: 4, name: "Savannah.", role: "Tech Enthusiast", img: "https://i.pravatar.cc/150?u=4", review: "EverBuy Prime shipping is no joke. I ordered a smartwatch at midnight and it was on my desk before my lunch break the next day." },
               { id: 5, name: "Anil N.", role: "University Student", img: "https://i.pravatar.cc/150?u=5", review: "Customer service handled my return in under 5 minutes. No endless automated bots, just instant, helpful support. Lifetime customer right here." },
               { id: 6, name: "Rebecca M.", role: "Digital Marketer", img: "https://i.pravatar.cc/150?u=6", review: "Managed to snag a massive flash deal on noise-cancelling headphones. The live tracking and inventory updates are highly accurate." },
-              { id: 7, name: "Kavya P.", role: "Freelance Designer", img: "https://i.pravatar.cc/150?u=7", review: "The aesthetics of this platform are unmatched. It makes shopping for everyday home essentials feel like a curated, premium experience." },
+              { id: 7, name: "Elisa P.", role: "Freelance Designer", img: "https://i.pravatar.cc/150?u=7", review: "The aesthetics of this platform are unmatched. It makes shopping for everyday home essentials feel like a curated, premium experience." },
               { id: 8, name: "Rohan V.", role: "Cloud Architect", img: "https://i.pravatar.cc/150?u=8", review: "Finally, an e-commerce architecture that doesn't lag or feel cluttered. The search debounce is perfectly tuned. Highly reliable." }
             ].concat([ // Duplicating the array seamlessly creates the infinite loop illusion
               { id: 11, name: "Priya S.", role: "Software Engineer", img: "https://i.pravatar.cc/150?u=1", review: "The delivery was incredibly fast, and the packaging was premium. It genuinely felt like unboxing a luxury item rather than a standard online order." },
@@ -314,7 +325,7 @@ export default function Home() {
               { id: 14, name: "Savannah.", role: "Tech Enthusiast", img: "https://i.pravatar.cc/150?u=4", review: "EverBuy Prime shipping is no joke. I ordered a smartwatch at midnight and it was on my desk before my lunch break the next day." },
               { id: 15, name: "Anil.", role: "University Student", img: "https://i.pravatar.cc/150?u=5", review: "Customer service handled my return in under 5 minutes. No endless automated bots, just instant, helpful support. Lifetime customer right here." },
               { id: 16, name: "Arjun D.", role: "Digital Marketer", img: "https://i.pravatar.cc/150?u=6", review: "Managed to snag a massive flash deal on noise-cancelling headphones. The live tracking and inventory updates are highly accurate." },
-              { id: 17, name: "Kavya P.", role: "Freelance Designer", img: "https://i.pravatar.cc/150?u=7", review: "The aesthetics of this platform are unmatched. It makes shopping for everyday home essentials feel like a curated, premium experience." },
+              { id: 17, name: "Elisa P.", role: "Freelance Designer", img: "https://i.pravatar.cc/150?u=7", review: "The aesthetics of this platform are unmatched. It makes shopping for everyday home essentials feel like a curated, premium experience." },
               { id: 18, name: "Rohan V.", role: "Cloud Architect", img: "https://i.pravatar.cc/150?u=8", review: "Finally, an e-commerce architecture that doesn't lag or feel cluttered. The search debounce is perfectly tuned. Highly reliable." }
             ]).map((testimonial) => (
               <div 
@@ -390,7 +401,7 @@ export default function Home() {
       </style>
 
       {/* 6. PLATFORM ECOSYSTEM (ULTRA BENTO GRID) */}
-      <section className="relative px-4 sm:px-6 max-w-[1400px] mx-auto my-32 pb-10">
+      <section className="relative transform-gpu px-4 sm:px-6 max-w-[1400px] mx-auto my-32 pb-10">
         {/* Animated Tech Grid Background */}
         <div className="absolute inset-0 tech-grid [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)] pointer-events-none -z-10"></div>
 
@@ -409,7 +420,7 @@ export default function Home() {
           {/* Bento Box 1: EverBuy Obsidian (Holographic Glassmorphism) */}
           <div className="md:col-span-2 bg-[#0a0f16] rounded-[32px] p-1 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] group cursor-pointer">
             {/* Rotating Holographic Orb */}
-            <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-[#ff9900] via-[#ff3300] to-[#8b5cf6] blur-[100px] opacity-20 group-hover:opacity-40 animate-spin-slow rounded-full pointer-events-none transition-opacity duration-700"></div>
+            <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-[#ff9900] via-[#ff3300] to-[#8b5cf6] blur-[100px] opacity-20 group-hover:opacity-40 animate-spin-slow rounded-full pointer-events-none transition-opacity duration-700 transform-gpu"></div>
             
             <div className="bg-[#0f172a]/80 backdrop-blur-2xl w-full h-full rounded-[28px] p-8 md:p-12 relative z-10 border border-white/10 flex flex-col justify-center">
               <div className="flex items-center gap-3 mb-6">
@@ -506,7 +517,7 @@ export default function Home() {
       {/* 7. ULTRA CINEMATIC NEWSLETTER NODE (PILL SHAPED) */}
       <section className="relative py-32  overflow-hidden bg-[#0a0f16] border-y border-white/5">
         {/* Massive Animated Background Orbs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-gradient-to-r from-[#ff9900]/20 via-[#ff3300]/20 to-transparent blur-[120px] rounded-full pointer-events-none animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-gradient-to-r from-[#ff9900]/20 via-[#ff3300]/20 to-transparent blur-[120px] rounded-full pointer-events-none animate-pulse transform-gpu"></div>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 blur-[120px] rounded-full pointer-events-none"></div>
         
         {/* Subtle Tech Grid inside the dark area */}
