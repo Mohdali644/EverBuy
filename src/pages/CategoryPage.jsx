@@ -73,7 +73,7 @@ export default function CategoryPage() {
         { id: 'b1', title: 'Student Notebook Set', price: 18.99, image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80' },
         { id: 'b2', title: 'School Backpack', price: 49.99, image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80' },
         { id: 'b3', title: 'Desk Study Lamp', price: 34.50, image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80' },
-        { id: 'b4', title: 'Stationery Essentials Kit', price: 24.00, image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80' }
+        { id: 'b4', title: 'Stationery Essentials Kit', price: 24.00, image: 'https://www.bbassets.com/media/uploads/p/l/40324243_1-apsara-my-apsara-kit.jpg' }
       ]
     },
     outlets: {
