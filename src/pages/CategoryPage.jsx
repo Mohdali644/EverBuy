@@ -110,12 +110,15 @@ export default function CategoryPage() {
       
       {/* Floating Back to Home Button */}
       <div className="absolute top-[120px] left-6 md:left-12 z-10">
-        <button 
+        
+{/* */}
+      <button 
           onClick={() => navigate('/')}
-          className="fixed top-32 left-6 z-50 flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 shadow-sm rounded-full text-sm font-bold text-gray-600 hover:text-[#f26a21] hover:shadow-md hover:-translate-y-0.5 transition-all"
+          className="fixed top-32 left-6 z-50 flex items-center gap-2 text-black hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/20 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border-white/20 shadow-md"
         >
-          <i className="fa-solid fa-arrow-left"></i> Back to Home
+          <i className="fa-solid fa-arrow-left text-sm md:text-base"></i> <span className="hidden sm:inline">Back to Home</span>
         </button>
+
       </div>
 
       <section className="py-[90px] px-6 rounded-3xl mt-5 text-center bg-[#f8f9fa]">
