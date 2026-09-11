@@ -10,6 +10,7 @@ import { UserProvider } from './context/UserContext';
 import Home from './pages/Home';
 import CategoryPage from './pages/CategoryPage';
 import Checkout from './pages/Checkout';
+import Orders from './pages/Orders'; // <-- Added Orders import
 
 // Core Components
 import Navbar from './components/Navbar';
@@ -54,12 +55,14 @@ export default function App() {
                 <Route path="/categories" element={<CategoryPage />} />
                 
                 <Route path="/checkout" element={<Checkout />} />
+
+                {/* The new Orders routing connection */}
+                <Route path="/orders" element={<Orders />} /> 
                 
                 {/* WILDCARD FALLBACK: If a URL is completely broken, return to Home instead of a black screen */}
                 <Route path="*" element={<Home />} />
               </Routes>
             </main>
-
 
             <Footer />
 

@@ -226,11 +226,22 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                 )}
               </div>
               
-              {/* Returns Trigger - Restored to clean standard font */}
-              <div className="hidden 2xl:flex flex-col justify-center h-10 px-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 group/returns">
-                  <span className="text-[0.75rem] text-slate-400 font-medium group-hover/returns:text-white tracking-wide transition-colors">Returns</span>
-                  <span className="text-[0.95rem] font-bold tracking-wide text-white">& Orders</span>
-              </div>
+             {/* RETURNS & ORDERS - NOW LINKED TO THE TELEMETRY PAGE */}
+        <Link 
+          to="/orders" 
+          className="flex flex-col border border-transparent hover:border-white p-2 rounded-[2px] cursor-pointer relative group transition-all"
+        >
+          {/* The Glowing Green Notification Dot (Only shows if an order exists) */}
+          {localStorage.getItem('everbuy_active_order') && (
+            <span className="absolute top-1 right-1 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border-2 border-[#131921]"></span>
+            </span>
+          )}
+          
+          <span className="text-[0.75rem] text-white/80 font-medium leading-tight">Returns</span>
+          <span className="text-[0.875rem] text-white font-extrabold leading-tight tracking-wide">& Orders</span>
+        </Link>
               
               {/* Cart Button - Restored to clean standard font */}
               <div 

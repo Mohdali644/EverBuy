@@ -6,6 +6,32 @@ export default function Checkout() {
   const { cart, cartTotal, setCart, showToast } = useCart();
   const navigate = useNavigate();
   
+  const [paymentStatus, setPaymentStatus] = useState('idle'); // 'idle', 'processing', 'success'
+
+  const handleConfirmPayment = (e) => {
+    e.preventDefault();
+    setPaymentStatus('processing');
+
+    // Simulate secure network request
+    setTimeout(() => {
+      setPaymentStatus('success');
+      
+      // 1. Generate a fake Order ID and save it to the browser's memory
+      const newOrder = {
+        id: `EVB-${Math.floor(100000 + Math.random() * 900000)}`,
+        date: new Date().toLocaleDateString(),
+        status: 'DISPATCHED'
+      };
+      localStorage.setItem('everbuy_active_order', JSON.stringify(newOrder));
+      
+      // 2. Dispatch an event so the Navbar knows to light up
+      window.dispatchEvent(new Event('orderPlaced'));
+
+      // 3. Auto-redirect to the new Live Telemetry page after 1.5 seconds
+      setTimeout(() => navigate('/orders'), 1500); 
+    }, 2000);
+  };
+
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handlePlaceOrder = (e) => {
@@ -212,21 +238,24 @@ export default function Checkout() {
               <span className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff9900] to-[#ff3300] drop-shadow-sm">${cartTotal.toFixed(2)}</span>
             </div>
 
-            {/* Cinematic Place Order Button */}
-            <button 
-              onClick={handlePlaceOrder} 
-              disabled={isProcessing}
-              className={`w-full relative overflow-hidden text-white border-none py-4 px-5 text-lg font-black rounded-2xl cursor-pointer transition-all duration-300 active:translate-y-0
-                ${isProcessing 
-                  ? 'bg-slate-800 shadow-inner hover:translate-y-0' 
-                  : 'bg-gradient-to-r from-[#ff9900] to-[#ff3300] shadow-[0_10px_25px_rgba(255,100,0,0.3)] hover:shadow-[0_12px_30px_rgba(255,100,0,0.4)] hover:-translate-y-1'}`}
+            {/* REPLACE YOUR CURRENT BUTTON WITH THIS */}
+            <button
+              onClick={handleConfirmPayment}
+              disabled={paymentStatus !== 'idle'}
+              className={`w-full mt-6 py-4 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-3 shadow-lg ${
+                paymentStatus === 'success' 
+                  ? 'bg-emerald-500 text-white shadow-emerald-500/30' 
+                  : paymentStatus === 'processing' 
+                  ? 'bg-slate-400 text-white cursor-wait' 
+                  : 'bg-gradient-to-r from-[#ff9900] to-[#ff3300] hover:shadow-[#ff9900]/30 text-white hover:scale-[1.02] active:scale-95'
+              }`}
             >
-              {isProcessing ? (
-                <div className="flex items-center justify-center gap-2.5">
-                  <i className="fa-solid fa-circle-notch fa-spin text-[#ff9900] text-xl"></i> <span className="tracking-wide">Processing...</span>
-                </div>
+              {paymentStatus === 'success' ? (
+                <>Payment Confirmed <i className="fa-solid fa-circle-check text-xl"></i></>
+              ) : paymentStatus === 'processing' ? (
+                <>Processing Securely... <i className="fa-solid fa-circle-notch fa-spin text-xl"></i></>
               ) : (
-                <span className="tracking-wide">Confirm Payment</span>
+                <>Confirm Payment <i className="fa-solid fa-lock text-xl"></i></>
               )}
             </button>
 
