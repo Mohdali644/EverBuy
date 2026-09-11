@@ -26,9 +26,14 @@ export default function Orders() {
             </div>
             <h1 className="text-4xl font-black text-white tracking-tight">Manifest & Routing</h1>
           </div>
-          <button onClick={() => navigate('/')} className="text-slate-400 hover:text-white font-bold transition-colors">
-            <i className="fa-solid fa-arrow-left mr-2"></i> Return Home
-          </button>
+          <button 
+          onClick={() => navigate('/')}
+          className="translate-y-1/2 flex items-center gap-2 mb-3 text-white hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/20 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border border-white/30 shadow-md"
+        >
+          <i className="fa-solid fa-arrow-left text-sm md:text-base"></i> <span className="hidden sm:inline">Return to Store</span>
+        </button>
+
+
         </div>
 
         {activeOrder ? (
