@@ -58,13 +58,17 @@ export default function Checkout() {
       {/* --- PREMIUM SECURE HEADER (MEDIUM & VISIBLE) --- */}
       <header className="bg-[#0f172a] py-5 text-center border-b-[4px] border-[#ff9900] relative px-6 shadow-xl z-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]">
         
-        {/* Restored & Enhanced Return Button */}
-        <button 
+        <div className="absolute top-[120px] left-6 md:left-12 z-10">
+        
+{/* */}
+      <button 
           onClick={() => navigate('/')}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex items-center gap-2 text-white hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/20 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border border-white/30 shadow-md"
+          className="fixed top-32 left-4 z-50 flex mr-5 items-center gap-2 text-black hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/20 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border-white/20 shadow-md"
         >
           <i className="fa-solid fa-arrow-left text-sm md:text-base"></i> <span className="hidden sm:inline">Return to Store</span>
         </button>
+
+      </div>
 
         <div className="inline-flex justify-center items-center gap-2.5 text-white text-[1.35rem] md:text-[1.75rem] font-black tracking-tight drop-shadow-lg">
           <i className="fa-solid fa-shield-check text-[#10b981] text-xl drop-shadow-[0_0_10px_rgba(16,185,129,0.8)]"></i> 
