@@ -63,7 +63,7 @@ export default function Checkout() {
 {/* */}
       <button 
           onClick={() => navigate('/')}
-          className="fixed top-32 left-4 z-50 flex mr-5 items-center gap-2 text-black hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/20 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border-white/20 shadow-md"
+          className="fixed top-32 left-3 z-50 flex mr-5 items-center gap-2 text-black hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/90 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border-white/20 shadow-md"
         >
           <i className="fa-solid fa-arrow-left text-sm md:text-base"></i> <span className="hidden sm:inline">Return to Store</span>
         </button>
@@ -246,7 +246,7 @@ export default function Checkout() {
             <button
               onClick={handleConfirmPayment}
               disabled={paymentStatus !== 'idle'}
-              className={`w-full mt-6 py-4 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-3 shadow-lg ${
+              className={`w-full mt-6 py-4 rounded-2xl font-black tracking-wider text-lg transition-all flex items-center justify-center gap-3 shadow-lg ${
                 paymentStatus === 'success' 
                   ? 'bg-emerald-500 text-white shadow-emerald-500/30' 
                   : paymentStatus === 'processing' 
