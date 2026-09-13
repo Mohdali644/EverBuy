@@ -39,7 +39,7 @@ export default function Orders() {
               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
               Live Telemetry Active
             </div>
-            <h1 className="text-4xl font-black text-white tracking-tight">Manifest & Routing</h1>
+            <h1 className="text-4xl font-black text-white tracking-wide">Manifest & Routing</h1>
           </div>
           
           <button 
@@ -105,7 +105,7 @@ export default function Orders() {
 
             {/* Right Col: Receipt Data */}
             <div className="bg-[#0f172a] rounded-3xl p-8 border border-white/5 shadow-xl flex flex-col h-full">
-              <h3 className="text-white font-black text-xl mb-6">Asset Details</h3>
+              <h3 className="text-white tracking-wider font-black text-xl mb-6">Asset Details</h3>
               <div className="flex flex-col gap-4 mb-8 flex-grow">
                 <div className="flex justify-between border-b border-white/5 pb-4">
                   <span className="text-slate-500 font-medium">Tracking ID</span>
@@ -130,7 +130,7 @@ export default function Orders() {
                 <button 
                   onClick={handleCancelOrder}
                   disabled={isCancelling}
-                  className={`w-full py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 border ${
+                  className={`w-full py-4 rounded-xl tracking-wider font-bold transition-all flex items-center justify-center gap-2 border ${
                     isCancelling 
                       ? 'bg-red-500/20 text-red-500 border-red-500/50 cursor-wait' 
                       : 'bg-transparent hover:bg-red-500/10 text-red-400 border-red-500/30 hover:border-red-500 hover:text-red-500'
