@@ -65,7 +65,6 @@ export default function App() {
             </main>
 
             <Footer />
-
             {/* --- GLOBAL OVERLAYS & MODALS --- */}
             
             {/* Slide-out cart panel */}

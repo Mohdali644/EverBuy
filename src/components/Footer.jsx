@@ -194,7 +194,7 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Glowing Back to Top Pill */}
+          {/*Back to Top Pill */}
           <button
             onClick={scrollToTop}
             className="group relative overflow-hidden bg-white/5 border border-white/10 hover:border-[#ff9900]/50 text-white px-5 py-2 rounded-full font-bold text-xs transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,153,0,0.2)] flex items-center gap-2"
