@@ -4,6 +4,19 @@ import { useCart } from '../context/CartContext';
 import { useUser } from '../context/UserContext';
 
 export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
+
+  const [hasActiveOrder, setHasActiveOrder] = useState(!!localStorage.getItem('everbuy_active_order'));
+
+  // 2. Add this listener so the dot updates instantly without refreshing
+  useEffect(() => {
+    const handleOrderChange = () => {
+      setHasActiveOrder(!!localStorage.getItem('everbuy_active_order'));
+    };
+    
+    window.addEventListener('orderTelemetryUpdate', handleOrderChange);
+    return () => window.removeEventListener('orderTelemetryUpdate', handleOrderChange);
+  }, []);
+
   const { cart, cartTotal, setIsCartOpen, cartIconRef } = useCart();
   const { user, logout } = useUser();
   
@@ -231,8 +244,8 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
           to="/orders" 
           className="flex flex-col border border-transparent hover:border-white p-2 rounded-[2px] cursor-pointer relative group transition-all"
         >
-          {/* The Glowing Green Notification Dot (Only shows if an order exists) */}
-          {localStorage.getItem('everbuy_active_order') && (
+          {/* Now uses the live state instead of checking local storage directly */}
+          {hasActiveOrder && (
             <span className="absolute top-1 right-1 flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border-2 border-[#131921]"></span>

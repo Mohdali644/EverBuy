@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Orders() {
   const navigate = useNavigate();
   const [activeOrder, setActiveOrder] = useState(null);
+  const [isCancelling, setIsCancelling] = useState(false);
 
   useEffect(() => {
     // Check if an order was placed from checkout
@@ -12,6 +13,20 @@ export default function Orders() {
       setActiveOrder(JSON.parse(savedOrder));
     }
   }, []);
+
+  const handleCancelOrder = () => {
+    setIsCancelling(true);
+    
+    // Simulate a secure termination process for 1.5 seconds
+    setTimeout(() => {
+      localStorage.removeItem('everbuy_active_order'); // Delete data
+      setActiveOrder(null); // Clear dashboard UI instantly
+      setIsCancelling(false); // Reset button state
+      
+      // Tell the Navbar to instantly remove the green dot
+      window.dispatchEvent(new Event('orderTelemetryUpdate')); 
+    }, 1500);
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0f16] pt-32 pb-20 px-6 font-sans">
@@ -104,9 +119,29 @@ export default function Orders() {
                   <span className="text-emerald-400 font-mono text-xs flex items-center gap-1"><i className="fa-solid fa-shield-halved"></i> AES-256</span>
                 </div>
               </div>
-              <button className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 py-4 rounded-xl font-bold transition-all hover:-translate-y-1">
-                Download Encrypted Invoice
-              </button>
+              {/* Stacked Action Buttons */}
+              <div className="mt-auto flex flex-col gap-3">
+                <button className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 py-4 rounded-xl font-bold transition-all hover:-translate-y-1">
+                  Download Encrypted Invoice
+                </button>
+                
+                {/* The new Cinematic Cancel Button */}
+                <button 
+                  onClick={handleCancelOrder}
+                  disabled={isCancelling}
+                  className={`w-full py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 border ${
+                    isCancelling 
+                      ? 'bg-red-500/20 text-red-500 border-red-500/50 cursor-wait' 
+                      : 'bg-transparent hover:bg-red-500/10 text-red-400 border-red-500/30 hover:border-red-500 hover:text-red-500'
+                  }`}
+                >
+                  {isCancelling ? (
+                    <>Terminating Manifest <i className="fa-solid fa-circle-notch fa-spin"></i></>
+                  ) : (
+                    <>Cancel Order <i className="fa-solid fa-ban"></i></>
+                  )}
+                </button>
+              </div>
             </div>
 
           </div>

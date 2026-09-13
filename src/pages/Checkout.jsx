@@ -24,8 +24,8 @@ export default function Checkout() {
       };
       localStorage.setItem('everbuy_active_order', JSON.stringify(newOrder));
       
-      // 2. Dispatch an event so the Navbar knows to light up
-      window.dispatchEvent(new Event('orderPlaced'));
+      //2. Dispatch the new universal event
+      window.dispatchEvent(new Event('orderTelemetryUpdate'));
 
       // 3. Auto-redirect to the new Live Telemetry page after 1.5 seconds
       setTimeout(() => navigate('/orders'), 1500); 
