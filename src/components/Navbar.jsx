@@ -151,7 +151,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                         <option>All Categories</option>
                         <option>Tech</option>
                         <option>Fashion</option>
-                        <option>Tech</option>
+                        <option>Kids</option>
                         <option>Gaming</option>
                         <option>Beauty</option>
                         <option>Books</option>
@@ -228,12 +228,12 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                     <div className="absolute -top-[5px] right-[18px] w-2.5 h-2.5 bg-white border-t border-l border-slate-200 rotate-45 transition-colors group-hover/tooltip:bg-slate-50"></div>
                     <div className="relative z-10 flex items-center gap-2.5">
                       <div className="w-5 h-5 rounded-full bg-[#ff9900]/10 flex items-center justify-center">
-                        <i className="fa-solid fa-bolt text-[#ff9900] text-[0.6rem]"></i>
+                        <i className="fa-solid fa-bolt text-[#ff9900] text-[0.7rem]"></i>
                       </div>
-                      <span className="text-slate-900 font-black text-[0.8rem] tracking-tight whitespace-nowrap">
+                      <span className="text-slate-900 font-black text-[0.8rem] whitespace-nowrap">
                         Sign in for the best experience
                       </span>
-                      <i className="fa-solid fa-arrow-right text-slate-400 group-hover/tooltip:text-[#ff9900] group-hover/tooltip:translate-x-0.5 transition-all text-[0.7rem] ml-1"></i>
+                      <i className="fa-solid fa-arrow-right text-slate-400 group-hover/tooltip:text-[#ff9900] group-hover/tooltip:translate-x-0.5 transition-all text-[0.9rem] ml-1"></i>
                     </div>
                   </div>
                 )}
