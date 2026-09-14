@@ -24,11 +24,13 @@ export default function CartDrawer() {
         onClick={() => setIsCartOpen(false)}
       ></div>
 
-      {/* Slide-In Drawer (NOW FULLY WHITE) */}
-      <div className={`fixed top-0 h-full w-full sm:w-[420px] bg-white border-l border-slate-200 z-[26000] shadow-[-20px_0_50px_rgba(0,0,0,0.15)] flex flex-col font-sans transition-all duration-400 ease-[cubic-bezier(0.23,1,0.32,1)] ${isCartOpen ? 'right-0' : '-right-[600px]'}`}>
+      {/* Floating Slide-In Drawer (ALL 4 CORNERS ROUNDED) */}
+      <div 
+        className={`fixed top-4 sm:top-5 h-[calc(100vh-32px)] sm:h-[calc(100vh-40px)] w-[calc(100%-32px)] sm:w-[420px] bg-white rounded-[20px] overflow-hidden border border-slate-200 z-[26000] shadow-[0_15px_40px_rgba(0,0,0,0.2)] flex flex-col font-sans transition-all duration-400 ease-[cubic-bezier(0.23,1,0.32,1)] ${isCartOpen ? 'right-4 sm:right-5' : '-right-[600px]'}`}
+      >
         
         {/* Header */}
-        <div className="px-5 py-4 border-b border-slate-200 flex justify-between items-center bg-white">
+        <div className="px-5 py-4 border-b border-slate-200 flex justify-between items-center bg-white shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-[#ff9900] animate-pulse"></div>
             <h2 className="text-[1.3rem] font-black text-slate-900 tracking-tight m-0">Your Manifest</h2>
@@ -42,7 +44,7 @@ export default function CartDrawer() {
         </div>
 
         {/* Dynamic Shipping Progress Bar */}
-        <div className="px-5 py-4 bg-slate-50 border-b border-slate-200">
+        <div className="px-5 py-4 bg-slate-50 border-b border-slate-200 shrink-0">
           {cartTotal >= THRESHOLD ? (
             <p className="text-emerald-600 font-bold text-[0.85rem] flex items-center gap-2 m-0 mb-2">
               <i className="fa-solid fa-check-circle"></i> Prime Shipping Unlocked!
@@ -92,7 +94,7 @@ export default function CartDrawer() {
                   <div className="flex justify-between items-end mt-1">
                     <span className="text-[#ff9900] font-black text-[1rem]">${item.price.toFixed(2)}</span>
                     
-                    {/* The Next-Level Quantity Stepper (Light Theme) */}
+                    {/* Quantity Stepper */}
                     {updateQuantity && (
                       <div className="flex items-center bg-slate-100 rounded-full border border-slate-200 p-[2px]">
                         <button 
@@ -122,7 +124,7 @@ export default function CartDrawer() {
 
         {/* Compact Footer / Checkout Actions */}
         {cart.length > 0 && (
-          <div className="p-4 bg-white border-t border-slate-200 shadow-[0_-10px_20px_rgba(0,0,0,0.03)]">
+          <div className="p-4 bg-white border-t border-slate-200 shadow-[0_-10px_20px_rgba(0,0,0,0.03)] shrink-0">
             <div className="flex justify-between items-center mb-3">
               <span className="text-slate-600 font-medium text-[0.9rem]">Subtotal</span>
               <span className="text-[1.3rem] font-black text-slate-900">${cartTotal.toFixed(2)}</span>
