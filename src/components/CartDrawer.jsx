@@ -26,14 +26,14 @@ export default function CartDrawer() {
 
       {/* Floating Slide-In Drawer (ALL 4 CORNERS ROUNDED) */}
       <div 
-        className={`fixed top-4 sm:top-5 h-[calc(100vh-32px)] sm:h-[calc(100vh-40px)] w-[calc(100%-32px)] sm:w-[420px] bg-white rounded-[20px] overflow-hidden border border-slate-200 z-[26000] shadow-[0_15px_40px_rgba(0,0,0,0.2)] flex flex-col font-sans transition-all duration-400 ease-[cubic-bezier(0.23,1,0.32,1)] ${isCartOpen ? 'right-4 sm:right-5' : '-right-[600px]'}`}
+        className={`fixed top-4 sm:top-5 h-[calc(100vh-32px)] sm:h-[calc(100vh-40px)] w-[calc(100%-32px)] sm:w-[420px] bg-white rounded-[20px] overflow-hidden z-[26000] shadow-[0_15px_40px_rgba(0,0,0,0.2)] flex flex-col font-sans transition-all duration-400 ease-[cubic-bezier(0.23,1,0.32,1)] ${isCartOpen ? 'right-4 sm:right-5' : '-right-[600px]'}`}
       >
         
         {/* Header */}
-        <div className="px-5 py-4 border-b border-slate-200 flex justify-between items-center bg-white shrink-0">
+        <div className="px-5 py-6 border-b border-slate-200 flex justify-between items-center bg-slate-900 shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-[#ff9900] animate-pulse"></div>
-            <h2 className="text-[1.3rem] font-black text-slate-900 tracking-tight m-0">Your Manifest</h2>
+            <h2 className="text-[1.34rem] font-black text-white m-0">Your Manifest</h2>
           </div>
           <button 
             onClick={() => setIsCartOpen(false)}
