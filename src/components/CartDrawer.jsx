@@ -2,11 +2,12 @@ import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function CartDrawer() {
-  const { cart, cartTotal, removeFromCart, isCartOpen, setIsCartOpen } = useCart();
+  const { cart, cartTotal, removeFromCart, updateQuantity, isCartOpen, setIsCartOpen } = useCart();
   const navigate = useNavigate();
 
-  // Feature 5: Free Shipping Motivator Engine
-  const THRESHOLD = 150.00;
+  // Free Shipping Engine
+  const THRESHOLD = 1000.00; 
+  const amountLeft = THRESHOLD - cartTotal;
   const percent = Math.min((cartTotal / THRESHOLD) * 100, 100);
 
   const handleCheckout = () => {
@@ -17,48 +18,124 @@ export default function CartDrawer() {
 
   return (
     <>
-      <div className={`fixed inset-0 bg-[#131a22]/70 backdrop-blur-[5px] z-[25000] transition-opacity duration-400 ${isCartOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setIsCartOpen(false)}></div>
+      {/* Dark Backdrop Overlay */}
+      <div 
+        className={`fixed inset-0 bg-[#131a22]/70 backdrop-blur-[5px] z-[25000] transition-opacity duration-400 ${isCartOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsCartOpen(false)}
+      ></div>
 
-      <div className={`fixed top-5 w-full max-w-[420px] h-[calc(100vh-40px)] bg-white z-[26000] rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.25)] flex flex-col overflow-hidden transition-all duration-400 ${isCartOpen ? 'right-5' : '-right-[500px]'}`}>
+      {/* Slide-In Drawer (NOW FULLY WHITE) */}
+      <div className={`fixed top-0 h-full w-full sm:w-[420px] bg-white border-l border-slate-200 z-[26000] shadow-[-20px_0_50px_rgba(0,0,0,0.15)] flex flex-col font-sans transition-all duration-400 ease-[cubic-bezier(0.23,1,0.32,1)] ${isCartOpen ? 'right-0' : '-right-[600px]'}`}>
         
-        <div className="p-6 bg-[#131a22] text-white flex justify-between items-center">
-          <h2 className="text-[1.4rem] font-bold m-0">Your Manifest</h2>
-          <button onClick={() => setIsCartOpen(false)} className="text-white text-3xl hover:text-[#f26a21] leading-none">&times;</button>
+        {/* Header */}
+        <div className="px-5 py-4 border-b border-slate-200 flex justify-between items-center bg-white">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full bg-[#ff9900] animate-pulse"></div>
+            <h2 className="text-[1.3rem] font-black text-slate-900 tracking-tight m-0">Your Manifest</h2>
+          </div>
+          <button 
+            onClick={() => setIsCartOpen(false)}
+            className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors"
+          >
+            <i className="fa-solid fa-xmark"></i>
+          </button>
         </div>
 
-        {/* Free Shipping Bar */}
-        <div className="p-4 bg-[#f8f9fa] border-b border-[#eee]">
+        {/* Dynamic Shipping Progress Bar */}
+        <div className="px-5 py-4 bg-slate-50 border-b border-slate-200">
           {cartTotal >= THRESHOLD ? (
-            <p className="m-0 text-[0.95rem] text-[#10b981] font-bold text-center"><i className="fa-solid fa-check-circle mr-2"></i> Unlocked Free Prime Shipping!</p>
+            <p className="text-emerald-600 font-bold text-[0.85rem] flex items-center gap-2 m-0 mb-2">
+              <i className="fa-solid fa-check-circle"></i> Prime Shipping Unlocked!
+            </p>
           ) : (
-            <>
-              <p className="m-0 mb-2 text-[0.9rem] text-[#333] font-bold"><i className="fa-solid fa-truck text-[#f26a21] mr-2"></i> Only ${(THRESHOLD - cartTotal).toFixed(2)} away from Free Shipping!</p>
-              <div className="w-full h-2 bg-[#ddd] rounded-full overflow-hidden"><div className="h-full bg-[#f26a21] transition-all" style={{ width: `${percent}%` }}></div></div>
-            </>
+            <p className="text-slate-600 font-medium text-[0.85rem] m-0 mb-2">
+              Add <span className="text-[#ff9900] font-bold">${amountLeft.toFixed(2)}</span> for Prime Shipping
+            </p>
           )}
+          <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-[#ff9900] to-[#ff3300] transition-all duration-700 ease-out"
+              style={{ width: `${percent}%` }}
+            ></div>
+          </div>
         </div>
 
-        <div className="flex-grow overflow-y-auto p-5 bg-white">
+        {/* Cart Items Scroll Area */}
+        <div className="flex-grow overflow-y-auto p-5 flex flex-col gap-3 scrollbar-hide bg-white">
           {cart.length === 0 ? (
-            <div className="text-center text-[#888] italic mt-32 font-medium">Your manifest is empty.</div>
+            <div className="h-full flex flex-col items-center justify-center text-slate-400 gap-4 mt-10">
+              <i className="fa-solid fa-ghost text-4xl opacity-50"></i>
+              <p className="font-medium text-[1rem]">Your manifest is empty.</p>
+            </div>
           ) : (
             cart.map((item, index) => (
-              <div key={index} className="flex items-center gap-4 p-3 bg-[#f8f9fa] rounded-2xl border border-[#f0f0f0] mb-3">
-                <div className="w-[70px] h-[70px] bg-white rounded-xl flex justify-center items-center overflow-hidden border border-[#eaeaea] shrink-0"><img src={item.image} className="max-w-[85%] max-h-[85%] object-contain" /></div>
-                <div className="flex-grow flex flex-col gap-1">
-                  <h4 className="text-[0.95rem] font-bold text-[#111] leading-snug line-clamp-2 m-0">{item.title}</h4>
-                  <span className="text-[1rem] font-black text-[#f26a21]">${item.price.toFixed(2)}</span>
-                  <button onClick={() => removeFromCart(index)} className="text-[#d9534f] text-[0.75rem] bg-[#d9534f]/10 font-bold py-1 px-3 rounded-lg w-max mt-1 hover:bg-[#d9534f]/20">Remove</button>
+              <div key={index} className="group flex gap-4 bg-white p-3 rounded-2xl border border-slate-200 hover:border-slate-300 transition-all shadow-sm hover:shadow-md">
+                
+                {/* Item Image */}
+                <div className="w-[75px] h-[75px] rounded-xl bg-slate-50 flex justify-center items-center overflow-hidden flex-shrink-0 border border-slate-100 p-1.5">
+                  <img src={item.image} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
                 </div>
+                
+                {/* Item Details */}
+                <div className="flex-grow flex flex-col justify-between py-0.5">
+                  <div className="flex justify-between items-start gap-2">
+                    <h3 className="text-slate-900 font-bold text-[0.9rem] leading-snug line-clamp-2 m-0">{item.title}</h3>
+                    <button 
+                      onClick={() => removeFromCart(index)}
+                      className="text-slate-400 hover:text-red-500 transition-colors shrink-0"
+                      title="Remove Item"
+                    >
+                      <i className="fa-solid fa-trash-can text-[0.85rem]"></i>
+                    </button>
+                  </div>
+                  
+                  <div className="flex justify-between items-end mt-1">
+                    <span className="text-[#ff9900] font-black text-[1rem]">${item.price.toFixed(2)}</span>
+                    
+                    {/* The Next-Level Quantity Stepper (Light Theme) */}
+                    {updateQuantity && (
+                      <div className="flex items-center bg-slate-100 rounded-full border border-slate-200 p-[2px]">
+                        <button 
+                          onClick={() => updateQuantity(index, -1)}
+                          className="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-200 rounded-full transition-colors"
+                        >
+                          <i className="fa-solid fa-minus text-[0.55rem]"></i>
+                        </button>
+                        <span className="w-5 text-center text-slate-900 font-bold text-[0.8rem]">
+                          {item.quantity || 1}
+                        </span>
+                        <button 
+                          onClick={() => updateQuantity(index, 1)}
+                          className="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-200 rounded-full transition-colors"
+                        >
+                          <i className="fa-solid fa-plus text-[0.55rem]"></i>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
               </div>
             ))
           )}
         </div>
 
-        <div className="p-6 bg-white border-t border-[#eee]">
-          <div className="flex justify-between text-[1.2rem] font-bold text-[#111] mb-5"><span>Subtotal</span><span>${cartTotal.toFixed(2)}</span></div>
-          <button onClick={handleCheckout} className="w-full bg-[#f26a21] hover:bg-[#d95b19] active:scale-95 text-white p-4 rounded-xl text-[1.1rem] font-bold transition-all">Proceed to Checkout</button>
-        </div>
+        {/* Compact Footer / Checkout Actions */}
+        {cart.length > 0 && (
+          <div className="p-4 bg-white border-t border-slate-200 shadow-[0_-10px_20px_rgba(0,0,0,0.03)]">
+            <div className="flex justify-between items-center mb-3">
+              <span className="text-slate-600 font-medium text-[0.9rem]">Subtotal</span>
+              <span className="text-[1.3rem] font-black text-slate-900">${cartTotal.toFixed(2)}</span>
+            </div>
+            
+            <button 
+              onClick={handleCheckout}
+              className="w-full bg-gradient-to-r from-[#ff9900] to-[#ff3300] hover:from-[#ffaa33] hover:to-[#ff5533] text-white py-3.5 rounded-xl font-black text-[1.05rem] transition-all hover:scale-[1.01] active:scale-95 shadow-[0_5px_15px_rgba(255,153,0,0.2)] flex items-center justify-center gap-2"
+            >
+              Proceed to Checkout 
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

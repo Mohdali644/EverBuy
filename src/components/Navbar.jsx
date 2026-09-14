@@ -37,14 +37,25 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
 
   useEffect(() => {
     let lastScroll = 0;
+    let ticking = false; // This prevents React from choking on scroll spam
+
     const handleScroll = () => {
-      const currentScroll = window.pageYOffset;
-      setShowNav(currentScroll < lastScroll || currentScroll < 100);
-      setIsScrolled(currentScroll > 50);
-      lastScroll = currentScroll;
-      if (currentScroll > 30) setShowTooltip(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScroll = window.pageYOffset;
+          setShowNav(currentScroll < lastScroll || currentScroll < 100);
+          setIsScrolled(currentScroll > 50);
+          if (currentScroll > 30) setShowTooltip(false);
+          
+          lastScroll = currentScroll;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    // The { passive: true } tells the browser not to wait for React to scroll the page
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -101,10 +112,10 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
           ${isScrolled ? 'pt-3 px-4' : 'pt-0 px-0'}`}
       >
         <div 
-          className={`mx-auto transition-all duration-500
+          className={`mx-auto transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]
             ${isScrolled 
               ? 'max-w-[1200px] bg-[#131921]/95 backdrop-blur-2xl rounded-[24px] border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)] ring-1 ring-white/5' 
-              : 'max-w-full bg-[#131921] border-b border-white/10'}`}
+              : 'max-w-full bg-[#131921] border-b border-white/10 shadow-none rounded-none'}`}
         >
           {/* TOP BAR */}
           <nav className={`flex items-center px-5 gap-4 lg:gap-6 transition-all duration-500 ${isScrolled ? 'h-[58px]' : 'h-[60px] max-w-[1800px] mx-auto'}`}>
@@ -273,8 +284,8 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
               </div>
           </nav>
           
-          {/* FULL RESTORED SUB-NAV BELT - Matched to image screenshot font-medium */}
-          <div className={`transition-all duration-500 overflow-hidden flex items-center px-6 gap-3 text-[0.85rem] font-medium max-w-[1800px] mx-auto scrollbar-hide tracking-tight ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[40px] opacity-100 border-t border-white/10'}`}>
+          {/* FULL RESTORED SUB-NAV BELT */}
+          <div className={`transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden flex items-center px-6 gap-3 text-[0.85rem] font-medium max-w-[1800px] mx-auto scrollbar-hide tracking-tight ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[40px] opacity-100 border-t border-white/10'}`}>
               <button 
                 className="flex items-center gap-1.5 px-3 py-1 rounded-full text-white bg-white/5 hover:bg-white/10 border border-transparent hover:border-white/20 transition-all duration-300 whitespace-nowrap focus:outline-none" 
                 onClick={() => setInfoOpen("All Categories")}

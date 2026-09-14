@@ -35,7 +35,24 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (product) => {
-    setCart((prev) => [...prev, product]);
+    setCart((prev) => {
+      // Look to see if the item is already in the cart
+      const existingItemIndex = prev.findIndex(item => item.title === product.title);
+      
+      if (existingItemIndex >= 0) {
+        // If it exists, just increase the quantity
+        const newCart = [...prev];
+        const currentQty = newCart[existingItemIndex].quantity || 1;
+        newCart[existingItemIndex] = { 
+          ...newCart[existingItemIndex], 
+          quantity: currentQty + 1 
+        };
+        return newCart;
+      } else {
+        // If it's new, add it with a starting quantity of 1
+        return [...prev, { ...product, quantity: 1 }];
+      }
+    });
     showToast(`${product.title} added to your manifest!`, 'success');
   };
 
@@ -43,10 +60,27 @@ export const CartProvider = ({ children }) => {
     setCart((prev) => prev.filter((_, index) => index !== indexToRemove));
   };
 
-  const cartTotal = cart.reduce((total, item) => total + item.price, 0);
+  // Fixed Quantity Updater (Uses Index)
+  const updateQuantity = (index, amount) => {
+    setCart(prevCart => {
+      const newCart = [...prevCart];
+      const currentQty = newCart[index].quantity || 1;
+      
+      // Calculate new quantity but never let it go below 1
+      newCart[index] = { 
+        ...newCart[index], 
+        quantity: Math.max(1, currentQty + amount) 
+      };
+      
+      return newCart;
+    });
+  };
+
+  // Fixed Math: Now multiplies the price by the item's quantity
+  const cartTotal = cart.reduce((total, item) => total + (item.price * (item.quantity || 1)), 0);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, cartTotal, isCartOpen, setIsCartOpen, cartIconRef, showToast }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, cartTotal, isCartOpen, setIsCartOpen, cartIconRef, showToast }}>
       {children}
     </CartContext.Provider>
   );
