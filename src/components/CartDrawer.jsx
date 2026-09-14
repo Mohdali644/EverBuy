@@ -30,7 +30,7 @@ export default function CartDrawer() {
       >
         
         {/* Header */}
-        <div className="px-5 py-6 border-b border-slate-200 flex justify-between items-center bg-slate-900 shrink-0">
+        <div className="px-5 py-7 border-b border-slate-200 flex justify-between items-center bg-slate-900 shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-[#ff9900] animate-pulse"></div>
             <h2 className="text-[1.34rem] font-black text-white m-0">Your Manifest</h2>
@@ -132,7 +132,7 @@ export default function CartDrawer() {
             
             <button 
               onClick={handleCheckout}
-              className="w-full bg-gradient-to-r from-[#ff9900] to-[#ff3300] hover:from-[#ffaa33] hover:to-[#ff5533] text-white py-3.5 rounded-xl font-black text-[1.05rem] transition-all hover:scale-[1.01] active:scale-95 shadow-[0_5px_15px_rgba(255,153,0,0.2)] flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-[#ff9900] tracking-wide to-[#ff3300] hover:from-[#ffaa33] hover:to-[#ff5533] text-white py-3.5 rounded-xl font-black text-[1.15rem] transition-all hover:scale-[1.01] active:scale-95 shadow-[0_5px_15px_rgba(255,153,0,0.2)] flex items-center justify-center gap-2"
             >
               Proceed to Checkout 
             </button>
