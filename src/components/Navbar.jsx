@@ -251,20 +251,21 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
               </div>
               
              {/* RETURNS & ORDERS - NOW LINKED TO THE TELEMETRY PAGE */}
+        {/* RETURNS & ORDERS - UPDATED HOVER EFFECT */}
         <Link 
           to="/orders" 
-          className="flex flex-col border border-transparent hover:border-white p-2 rounded-[2px] cursor-pointer relative group transition-all"
+          className="flex flex-col justify-center h-10 px-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 relative group"
         >
-          {/* Now uses the live state instead of checking local storage directly */}
+          {/* Glowing Green Notification Dot */}
           {hasActiveOrder && (
-            <span className="absolute top-1 right-1 flex h-3 w-3">
+            <span className="absolute top-0 right-0 flex h-3 w-3 translate-x-1 -translate-y-1">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border-2 border-[#131921]"></span>
             </span>
           )}
           
-          <span className="text-[0.75rem] text-white/80 font-medium leading-tight">Returns</span>
-          <span className="text-[0.875rem] text-white font-extrabold leading-tight tracking-wide">& Orders</span>
+          <span className="text-[0.79rem] mb-1 text-slate-400 font-medium leading-none group-hover:text-white transition-colors">Returns</span>
+          <span className="text-[0.96rem] text-white font-bold leading-tight tracking-wide">& Orders</span>
         </Link>
               
               {/* Cart Button - Restored to clean standard font */}
