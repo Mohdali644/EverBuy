@@ -4,21 +4,31 @@ import { useUser } from '../context/UserContext';
 export default function SignInModal({ isOpen, onClose }) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(''); // New error state
   const { login } = useUser();
 
   if (!isOpen) return null;
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    // Require both fields to be filled before authenticating
-    if (name.trim() && password.trim()) {
-      // Only pass the name/email to the global state, keeping the password secure and out of the Navbar
-      login({ name: name, email: `${name.toLowerCase().replace(/\s/g, '')}@example.com` });
-      
-      // Clear the form and close the modal
-      setPassword('');
-      onClose();
+    setError(''); // Clear previous errors on new attempt
+
+    // Check if fields are empty and show a visible error if they are
+    if (!name.trim() || !password.trim()) {
+      setError('Both username and password are required.');
+      return; // Stop the function here
     }
+
+    // If both fields have text, proceed with login
+    login({ 
+      name: name, 
+      email: `${name.toLowerCase().replace(/\s/g, '')}@example.com` 
+    });
+    
+    // Clear the form and close the modal
+    setPassword('');
+    setName(''); // Good practice to clear the name too
+    onClose();
   };
 
   return (
@@ -49,7 +59,15 @@ export default function SignInModal({ isOpen, onClose }) {
         </div>
 
         <h2 className="text-2xl font-bold text-slate-900 text-center tracking-tight mb-2">Welcome to EverBuy</h2>
-        <p className="text-slate-500 text-center text-sm font-medium mb-8">Sign in to unlock personalized deals and hyper-fast checkout.</p>
+        <p className="text-slate-500 text-center text-sm font-medium mb-6">Sign in to unlock personalized deals and hyper-fast checkout.</p>
+
+        {/* The New Visual Error Message */}
+        {error && (
+          <div className="mb-4 bg-red-500/10 border border-red-500/20 text-red-600 text-sm font-bold px-4 py-3 rounded-xl flex items-center gap-2">
+            <i className="fa-solid fa-circle-exclamation"></i>
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleSignIn} className="flex flex-col gap-4">
           <div className="relative flex flex-col gap-1">
@@ -64,7 +82,6 @@ export default function SignInModal({ isOpen, onClose }) {
             />
           </div>
 
-          {/* New Password Field */}
           <div className="relative flex flex-col gap-1 mt-1">
             <div className="flex justify-between items-center ml-1">
                 <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Password</label>

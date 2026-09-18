@@ -68,3 +68,17 @@ export default function ProductCard({ title, price, image }) {
     </div>
   );
 }
+
+
+
+
+
+{/* <option>All Categories</option>
+                        <option>Tech</option>
+                        <option>Fashion</option>
+                        <option>Kids</option>
+                        <option>Beauty</option>
+                        <option>Books</option>
+                        <option>Gaming</option>
+                        <option>Home & Kitchen</option>
+                        <option>Automotive</option> */}
