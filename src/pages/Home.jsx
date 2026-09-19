@@ -199,18 +199,28 @@ export default function Home() {
         ))}
         <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-[#eaeded] to-transparent z-10"></div>
        {/* TEXT ROTATOR */}
-        <div className="relative z-20 pb-8">
-          <div className="inline-flex items-center bg-white/95 backdrop-blur-md px-[20px] py-[10px] rounded-full shadow-[0_8px_25px_rgba(0,0,0,0.08)] border border-white">
-            <div className="w-2 h-2 bg-[#f26a21] rounded-full mr-[15px] animate-pulse flex-shrink-0 shadow-[0_0_0_0_rgba(242,106,33,0.7)]"></div>
+        {/* TEXT ROTATOR (Fixed Duplication & Width) */}
+        <div className="relative z-20 pb-8 w-full flex justify-center">
+          <div className="w-[92%] sm:w-max max-w-[95vw] bg-white/95 backdrop-blur-md rounded-full p-1.5 sm:p-2 shadow-[0_15px_35px_rgba(0,0,0,0.06)] flex items-center justify-between sm:justify-center gap-2 sm:gap-4 border border-white transition-all">
             
-            <div className="h-6 flex items-center overflow-hidden w-[280px] sm:w-[420px]">
-              <span className={`text-[0.95rem] text-[#333] mr-[20px] whitespace-nowrap ${animClass}`}>
-                {heroMessages[msgIndex]}
-              </span>
+            <div className="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 overflow-hidden">
+              {/* Pulsing Dot */}
+              <div className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffaa55] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-[#ff9900]"></span>
+              </div>
+              
+              {/* Dynamic Rotator Text (Wider container, no hardcoded text) */}
+              <div className="flex h-6 items-center overflow-hidden w-[220px] sm:w-[360px] md:w-[420px]">
+                <span className={`text-slate-900 font-bold text-[0.75rem] sm:text-[0.95rem] tracking-tight whitespace-nowrap ${animClass}`}>
+                  {heroMessages[msgIndex]}
+                </span>
+              </div>
             </div>
-
-            <button className="bg-[#131a22] hover:bg-[#f26a21] text-white px-4 py-1.5 rounded-full text-[0.85rem] font-bold flex items-center gap-2 transition-colors flex-shrink-0">
-              Explore <i className="fas fa-arrow-right"></i>
+            
+            {/* Action Button */}
+            <button className="bg-[#131a22] hover:bg-[#f26a21] text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-[0.7rem] sm:text-[0.85rem] font-bold transition-colors flex items-center gap-1.5 sm:gap-2 shrink-0 group">
+              Explore <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
             </button>
           </div>
         </div>
