@@ -25,6 +25,8 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [showTooltip, setShowTooltip] = useState(false);
+  // NEW: State for the "Next Level" Coming Soon Modal
+  const [comingSoon, setComingSoon] = useState(null);
 
   const mockDatabase = [
     "Sony Wireless Headphones", "Samsung Galaxy S24", "MacBook Pro 16-inch", 
@@ -241,7 +243,6 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                 </div>
                 
                 {/* Returns & Orders - Icon on Mobile, Text on Desktop */}
-                {/* Returns & Orders - Fixed Focus Outline */}
                 <Link 
                   to="/orders" 
                   className="flex flex-col justify-center items-center md:items-start h-9 sm:h-10 w-9 sm:w-auto md:px-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 relative group outline-none focus:outline-none"
@@ -279,17 +280,67 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
           </nav>
           
           {/* TOUCH-PAN SUB-NAV BELT */}
-          <div className={`transition-all duration-500 overflow-x-auto flex-nowrap whitespace-nowrap scrollbar-hide flex items-center px-4 sm:px-6 gap-3 text-[0.8rem] sm:text-[0.85rem] font-medium max-w-[1800px] mx-auto tracking-tight overscroll-x-contain touch-pan-x ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[45px] sm:h-[40px] opacity-100 border-t border-white/10'}`}>
-              <button className="flex items-center gap-1.5 px-3 py-1 rounded-full text-white bg-white/5 hover:bg-white/10 transition-all focus:outline-none shrink-0" onClick={() => setInfoOpen("All Categories")}>
+          {/* TOUCH-PAN SUB-NAV BELT - Wired to trigger the Coming Soon Modal */}
+          <div className={`transition-all duration-500 overflow-x-auto flex-nowrap whitespace-nowrap scrollbar-hide flex items-center px-4 sm:px-6 gap-3 text-[0.8rem] sm:text-[0.85rem] font-medium max-w-[1800px] mx-auto tracking-wide overscroll-x-contain touch-pan-x ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[35px] sm:h-[40px] opacity-100 border-t border-white/10'}`}>
+              <button className="flex items-center gap-1.5 px-3 py-1 rounded-full text-white bg-white/5 hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0" onClick={() => setInfoOpen("All Categories")}>
                   <i className="fa-solid fa-bars"></i> All
               </button>
-              <button className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all focus:outline-none shrink-0">Today's Deals</button>
-              <button className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all focus:outline-none shrink-0">Customer Service</button>
-              <button className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all focus:outline-none shrink-0">Registry</button>
-              <button className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all focus:outline-none shrink-0">Gift Cards</button>
+              <button onClick={() => setComingSoon("Today's Deals")} className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0">Today's Deals</button>
+              <button onClick={() => setComingSoon("Customer Service")} className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0">Customer Service</button>
+              <button onClick={() => setComingSoon("Registry")} className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0">Registry</button>
+              <button onClick={() => setComingSoon("Gift Cards")} className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0">Gift Cards</button>
           </div>
         </div>
       </header>
+      {/* --- THE "NEXT LEVEL" COMING SOON MODAL (ULTRA COMPACT) --- */}
+      {comingSoon && (
+        <div className="fixed inset-0 z-[100000] flex items-center justify-center p-4 font-sans">
+          
+          {/* Subtle Blur Backdrop */}
+          <div 
+            className="absolute inset-0 bg-[#05080f]/70 backdrop-blur-sm transition-opacity animate-in fade-in duration-300"
+            onClick={() => setComingSoon(null)}
+          ></div>
+          
+          {/* Compact Floating Neon Panel */}
+          <div className="relative w-full max-w-[320px] bg-[#0a0f16] rounded-[24px] p-6 shadow-[0_20px_40px_rgba(0,0,0,0.5),0_0_30px_rgba(255,153,0,0.05)] border border-white/10 animate-in zoom-in-95 fade-in duration-200 overflow-hidden">
+            
+            {/* Ambient Background Glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[100px] bg-gradient-to-b from-[#ff9900]/15 to-transparent blur-xl rounded-full pointer-events-none"></div>
+            
+            {/* Close Button */}
+            <button 
+              onClick={() => setComingSoon(null)}
+              className="absolute top-4 right-4 w-7 h-7 flex items-center justify-center rounded-full bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white transition-colors z-20 outline-none focus:outline-none"
+            >
+              <i className="fa-solid fa-xmark text-sm"></i>
+            </button>
+
+            {/* Content */}
+            <div className="flex flex-col items-center text-center relative z-10 mt-1">
+              
+              {/* Compact Rocket Icon */}
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#ff9900] to-[#ff3300] p-[1.5px] shadow-lg mb-4 shadow-[#ff9900]/20">
+                <div className="w-full h-full bg-[#0a0f16] rounded-[10.5px] flex items-center justify-center">
+                  <i className="fa-solid fa-rocket text-lg text-transparent bg-clip-text bg-gradient-to-tr from-[#ff9900] to-[#ff3300]"></i>
+                </div>
+              </div>
+              
+              <h3 className="text-xl font-black text-white tracking-wide mb-2">Coming Soon</h3>
+              <p className="text-slate-400 font-medium text-[0.85rem] leading-snug mb-5 px-2">
+                <span className="text-white font-bold">{comingSoon}</span> is currently undergoing quantum polishing.
+              </p>
+              
+              <button 
+                onClick={() => setComingSoon(null)}
+                className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl py-2.5 font-bold text-[0.85rem] transition-all hover:border-[#ff9900]/50 outline-none focus:outline-none active:scale-95"
+              >
+                Got it
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
