@@ -272,7 +272,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
           </nav>
           
           {/* TOUCH-PAN SUB-NAV BELT */}
-          <div className={`transition-all duration-500 overflow-x-auto flex-nowrap whitespace-nowrap scrollbar-hide flex items-center px-4 sm:px-6 gap-3 text-[0.8rem] sm:text-[0.85rem] font-medium max-w-[1800px] mx-auto tracking-tight overscroll-x-contain touch-pan-x ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[35px] sm:h-[40px] opacity-100 border-t border-white/10'}`}>
+          <div className={`transition-all duration-500 overflow-x-auto flex-nowrap whitespace-nowrap scrollbar-hide flex items-center px-4 sm:px-6 gap-3 text-[0.8rem] sm:text-[0.85rem] font-medium max-w-[1800px] mx-auto tracking-tight overscroll-x-contain touch-pan-x ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[45px] sm:h-[40px] opacity-100 border-t border-white/10'}`}>
               <button className="flex items-center gap-1.5 px-3 py-1 rounded-full text-white bg-white/5 hover:bg-white/10 transition-all focus:outline-none shrink-0" onClick={() => setInfoOpen("All Categories")}>
                   <i className="fa-solid fa-bars"></i> All
               </button>
