@@ -235,9 +235,10 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                 </div>
                 
                 {/* Returns & Orders - Icon on Mobile, Text on Desktop */}
+                {/* Returns & Orders - Fixed Focus Outline */}
                 <Link 
                   to="/orders" 
-                  className="flex flex-col justify-center items-center md:items-start h-9 sm:h-10 w-9 sm:w-auto md:px-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 relative group"
+                  className="flex flex-col justify-center items-center md:items-start h-9 sm:h-10 w-9 sm:w-auto md:px-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 relative group outline-none focus:outline-none"
                 >
                   {hasActiveOrder && (
                     <span className="absolute top-0 right-0 flex h-2.5 w-2.5 md:h-3 md:w-3 translate-x-0.5 md:translate-x-1 -translate-y-0.5 md:-translate-y-1">
