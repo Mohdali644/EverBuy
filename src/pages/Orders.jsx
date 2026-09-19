@@ -44,7 +44,7 @@ export default function Orders() {
           
           <button 
           onClick={() => navigate('/')}
-          className="fixed top-32 left-6 z-50 flex items-center gap-2 text-black hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/70 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border-white/20 shadow-md"
+          className="fixed top-60 left-3 sm:left-6 -translate-y-1/2 z-50 flex items-center justify-center gap-2 text-white hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/10 hover:bg-[#f78902] w-9 h-9 sm:w-auto sm:h-auto sm:px-5 sm:py-2.5 rounded-full backdrop-blur-md border border-white/20 shadow-md"
         >
           <i className="fa-solid fa-arrow-left text-center md:text-base"></i> <span className="hidden text-center sm:inline">Return to Home</span>
         </button>
