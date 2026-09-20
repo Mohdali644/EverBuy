@@ -245,12 +245,30 @@ export default function Home() {
         ))}
       </section>
 
-      {/* 3. FEATURES BAR */}
-      <section className="flex flex-wrap justify-evenly items-center bg-white p-[30px] mx-auto max-w-[1400px] rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] mt-[75px] gap-4">
-        <div className="flex items-center gap-[10px] font-bold text-[#37475a]"><i className="fa-solid fa-truck-fast text-[1.5rem] text-[#ff9900]"></i><span>Fast Delivery</span></div>
-        <div className="flex items-center gap-[10px] font-bold text-[#37475a]"><i className="fa-solid fa-shield-halved text-[1.5rem] text-[#ff9900]"></i><span>Secure Payments</span></div>
-        <div className="flex items-center gap-[10px] font-bold text-[#37475a]"><i className="fa-solid fa-rotate-left text-[1.5rem] text-[#ff9900]"></i><span>Easy Returns</span></div>
-        <div className="flex items-center gap-[10px] font-bold text-[#37475a]"><i className="fa-solid fa-headset text-[1.5rem] text-[#ff9900]"></i><span>24/7 Support</span></div>
+      <section className="bg-white rounded-2xl md:rounded-[24px] shadow-[0_8px_30px_rgba(0,0,0,0.04)] mx-4 sm:mx-6 xl:mx-auto max-w-[1400px] mt-12 md:mt-[75px] mb-10 border border-slate-100">
+        <div className="grid grid-cols-2 lg:flex lg:flex-row lg:justify-evenly gap-y-8 gap-x-4 p-6 sm:p-8">
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
+            <i className="fa-solid fa-truck-fast text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-1 transition-transform duration-300"></i>
+            <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Fast Delivery</span>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
+            <i className="fa-solid fa-shield-halved text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-1 transition-transform duration-300"></i>
+            <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Secure Payments</span>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
+            <i className="fa-solid fa-rotate-left text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-1 transition-transform duration-300 -scale-x-100"></i>
+            <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Easy Returns</span>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
+            <i className="fa-solid fa-headset text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-1 transition-transform duration-300"></i>
+            <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">24/7 Support</span>
+          </div>
+
+        </div>
       </section>
 
       {/* 4. ULTRA ENGAGEMENT HUB */}

@@ -30,9 +30,9 @@ export default function CartDrawer() {
       >
         
         {/* Header */}
-        <div className="px-5 py-7 border-b border-slate-200 flex justify-between items-center bg-slate-900 shrink-0">
+        <div className="px-5 py-8 border-b border-slate-200 flex justify-between items-center bg-slate-900 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-[#ff9900] animate-pulse"></div>
+            <div className="w-2 h-2 rounded-full bg-[#ff7b00] mt-1 mr-1 animate-pulse"></div>
             <h2 className="text-[1.34rem] font-black text-white m-0">Your Manifest</h2>
           </div>
           <button 
@@ -65,9 +65,9 @@ export default function CartDrawer() {
         {/* Cart Items Scroll Area */}
         <div className="flex-grow overflow-y-auto p-5 flex flex-col gap-3 scrollbar-hide bg-white">
           {cart.length === 0 ? (
-            <div className="h-full flex flex-col items-center justify-center text-slate-400 gap-4 mt-10">
-              <i className="fa-solid fa-ghost text-4xl opacity-50"></i>
-              <p className="font-medium text-[1rem]">Your manifest is empty.</p>
+            <div className="h-full flex flex-col items-center mb-20 justify-center text-slate-400 gap-4 mt-10">
+              <i className="fa-solid fa-ghost text-5xl opacity-50"></i>
+              <p className="font-medium text-[1.2rem]">Your manifest is empty.</p>
             </div>
           ) : (
             cart.map((item, index) => (
