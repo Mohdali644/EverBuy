@@ -43,12 +43,10 @@ export default function Footer() {
   ];
 
   return (
-    // Reduced overall padding from pt-24 pb-10 to pt-12 pb-8
-    <footer className="relative bg-[#0a0f16] pt-12 pb-8 border-t border-white/5 overflow-hidden font-sans">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-[#ff9900]/5 to-transparent blur-[80px] pointer-events-none"></div>
-
+    <footer className="relative bg-[#0a0f16] pt-12 pb-8 border-t border-white/10 overflow-hidden font-sans">
+      {/* Background Effects with Smooth Fade-In Mask */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%)]"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-[#ff9900]/10 to-transparent blur-[80px] pointer-events-none"></div>
       {/* Massive Faded Watermark */}
       <div className="absolute -bottom-20 -right-10 text-[15rem] font-black text-white/[0.02] tracking-tighter pointer-events-none select-none rotate-[-5deg]">
         EVERBUY

@@ -163,13 +163,13 @@ export default function Home() {
             {product.badge}
           </div>
         )}
-        <img ref={imageRef} src={product.image} className="h-[220px] w-full object-contain rounded-xl block group-hover:scale-[1.02] transition-transform bg-[#f8f9fa] mix-blend-darken" alt={product.title} />
+        <img ref={imageRef} src={product.image} className="h-[220px] w-full object-contain rounded-xl block group-hover: mix-blend-darken" alt={product.title} />
         
         <div className="mt-4 flex flex-col flex-grow">
           <h3 className="text-[1.15rem] font-extrabold text-[#0f172a] mb-3">{product.title}</h3>
           <div className="flex justify-between items-center mb-5">
             <span className="text-[1.3rem] font-black text-[#0f172a]">${product.price.toFixed(2)}</span>
-            <span className="bg-[#fffbeb] text-[#d97706] px-2.5 py-1 rounded-lg text-[0.85rem] font-extrabold flex items-center gap-1">
+            <span className="bg-[#fffbeb] text-[#d97706] px-2.5 py-1 rounded-lg text-[0.90rem] font-bold flex items-center gap-1">
               <i className="fa-solid fa-star"></i> 4.9
             </span>
           </div>
@@ -325,7 +325,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. VOICES OF EVERBUY */}
       {/* 5. NEXT-LEVEL VOICES OF EVERBUY (INFINITE MARQUEE) */}
       <section className="bg-[#0a0f16] py-20 mt-12 relative overflow-hidden border-t border-white/5">
         {/* Cinematic Background Glows */}
@@ -569,71 +568,94 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. ULTRA CINEMATIC NEWSLETTER NODE (PILL SHAPED) */}
-      <section className="relative py-32  overflow-hidden bg-[#0a0f16] border-y border-white/5">
-        {/* Massive Animated Background Orbs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-gradient-to-r from-[#ff9900]/20 via-[#ff3300]/20 to-transparent blur-[120px] rounded-full pointer-events-none animate-pulse transform-gpu"></div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+      {/* 7. ULTRA CINEMATIC NEWSLETTER NODE (Seamless Dark Transition) */}
+      <div className="w-full bg-gradient-to-b from-[#eaeded] via-[#0a0f16] to-[#0a0f16] pt-12 pb-8 sm:pt-20 sm:pb-12 mt-12">
+        <section className="mx-4 sm:mx-6 xl:mx-auto max-w-[1400px] relative z-20">
         
-        {/* Subtle Tech Grid inside the dark area */}
-        <div className="absolute inset-0 tech-grid opacity-20 pointer-events-none"></div>
-        
-        <div className="relative z-10  max-w-[800px] mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-8 shadow-xl backdrop-blur-md">
-            <div className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
-            System Online
-          </div>
-          <h2 className="text-5xl md:text-7xl tracking-normal font-black text-white mb-6 drop-shadow-2xl">
-            Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff9900] to-[#ff3300]">Network.</span>
-          </h2>
-          <p className="text-xl text-slate-400 font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
-            Get exclusive early access to limited tech drops, flash deals, and Obsidian tier invitations directly to your mainframe.
-          </p>
+        {/* Floating Rounded Container */}
+        <div className="relative py-16 sm:py-24 md:py-32 overflow-hidden bg-[#0a0f16] rounded-[32px] sm:rounded-[48px] shadow-[0_30px_80px_rgba(0,0,0,0.4)] border border-white/5 flex flex-col items-center">
           
-          {/* Glowing Neon Input Field - PERFECT PILL SHAPE */}
-          <div className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto relative group">
-            {/* The outer glowing border effect */}
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-[#ff9900] via-[#ff3300] to-[#ff9900] rounded-full blur-lg opacity-30 group-focus-within:opacity-80 group-hover:opacity-60 transition duration-500 animate-shimmer bg-[length:200%_auto]"></div>
+          {/* Massive Animated Background Orbs (Contained within rounded borders) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] sm:w-[1000px] h-[300px] sm:h-[500px] bg-gradient-to-r from-[#ff9900]/20 via-[#ff3300]/20 to-transparent blur-[80px] sm:blur-[120px] rounded-full pointer-events-none animate-pulse transform-gpu"></div>
+          <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-500/10 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none"></div>
+          
+          {/* Subtle Tech Grid inside the dark area */}
+          <div className="absolute inset-0 tech-grid opacity-20 pointer-events-none"></div>
+          
+          <div className="relative z-10 w-full max-w-[900px] mx-auto px-4 sm:px-8 text-center flex flex-col items-center">
             
-            {/* The main form container */}
-            <form onSubmit={handleInitialize} className="relative flex w-full bg-[#0f172a] rounded-full p-2 shadow-2xl border border-white/10 backdrop-blur-xl">
+            {/* System Online Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[0.65rem] sm:text-xs font-black uppercase tracking-widest mb-6 sm:mb-8 shadow-xl backdrop-blur-md">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#10b981] animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
+              System Online
+            </div>
+            
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-black text-white mb-4 sm:mb-6 drop-shadow-2xl px-2">
+              Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff9900] to-[#ff3300]">Network.</span>
+            </h2>
+            
+            <p className="text-sm sm:text-lg md:text-xl text-slate-400 font-medium mb-10 sm:mb-12 max-w-[95%] sm:max-w-2xl mx-auto leading-relaxed px-2">
+              Get exclusive early access to limited tech drops, flash deals, and Obsidian tier invitations directly to your mainframe.
+            </p>
+            
+            {/* Glowing Neon Input Field - ULTRA FLUID PILL SHAPE */}
+            <div className="relative w-full max-w-[95%] sm:max-w-xl mx-auto group">
+              {/* The outer glowing border effect (Adaptive inset for mobile) */}
+              <div className="absolute -inset-1 sm:-inset-1.5 bg-gradient-to-r from-[#ff9900] via-[#ff3300] to-[#ff9900] rounded-full blur-md sm:blur-lg opacity-40 group-focus-within:opacity-80 group-hover:opacity-60 transition duration-500 animate-shimmer bg-[length:200%_auto]"></div>
               
-              <div className="pl-6 flex items-center justify-center text-slate-500">
-                <i className="fa-solid fa-envelope"></i>
-              </div>
-              
-              <input 
-                type="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={isInitialized}
-                required
-                placeholder="Enter system email..." 
-                className="flex-grow mr-2 ml-2 bg-transparent border-none outline-none px-4 text-white font-medium placeholder:text-slate-500 p-2 m-0.5 rounded-3xl text-lg w-full disabled:opacity-50"
-              />
-              
-              <button 
-                type="submit"
-                disabled={isInitialized}
-                className={`px-8 py-4 rounded-full font-black transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center gap-2 shrink-0 ${
-                  isInitialized 
-                    ? 'bg-emerald-500 text-white cursor-default' 
-                    : 'bg-white hover:bg-slate-200 text-slate-900 hover:scale-105 active:scale-95'
-                }`}
-              >
-                {isInitialized ? (
-                  <>Initialized <i className="fa-solid fa-check text-white"></i></>
-                ) : (
-                  <>Initialize <i className="fa-solid fa-bolt text-[#ff9900]"></i></>
-                )}
-              </button>
-            </form>
+              {/* The main form container */}
+              <form onSubmit={handleInitialize} className="relative flex items-center w-full bg-[#0f172a] rounded-full p-1.5 sm:p-2 shadow-2xl border border-white/10 backdrop-blur-xl">
+                
+                {/* Mail Icon - Hides on ultra-small screens to preserve typing space */}
+                <div className="pl-4 sm:pl-6 hidden min-[360px]:flex items-center justify-center text-slate-500 transition-colors group-focus-within:text-[#ff9900]">
+                  <i className="fa-solid fa-envelope"></i>
+                </div>
+                
+                {/* text-[16px] REQUIRED to stop iOS auto-zoom */}
+                <input 
+                  type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isInitialized}
+                  required
+                  placeholder="Enter system email..." 
+                  className="flex-grow bg-transparent border-none ml-4 mr-4 outline-none  px-3 sm:px-4 text-white font-medium placeholder:text-slate-500 py-2 sm:py-[14px] rounded-3xl text-[16px] sm:text-lg w-full disabled:opacity-50 tracking-wide"
+                />
+                
+                {/* Adaptive Button */}
+                <button 
+                  type="submit"
+                  disabled={isInitialized}
+                  className={`px-5 sm:px-8 py-3 sm:py-4 rounded-full font-black text-sm sm:text-base transition-all flex items-center justify-center gap-1.5 sm:gap-2 shrink-0 ${
+                    isInitialized 
+                      ? 'bg-emerald-500 text-white cursor-default shadow-[0_0_15px_rgba(16,185,129,0.4)]' 
+                      : 'bg-white hover:bg-slate-200 text-slate-900 hover:scale-105 active:scale-95 shadow-md'
+                  }`}
+                >
+                  {isInitialized ? (
+                    <>
+                      <span className="hidden tracking-wider min-[380px]:inline">Initialized</span> 
+                      <i className="fa-solid fa-check text-white text-2xl"></i>
+                    </>
+                  ) : (
+                    <>
+                      <span className="hidden tracking-wide min-[380px]:inline">Initialize</span> 
+                      <i className="fa-solid fa-bolt text-[#ff9900] text-lg"></i>
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+            
+            {/* Legal Text */}
+            <p className="text-[0.65rem] sm:text-xs tracking-wider text-slate-500 mt-6 sm:mt-8 font-medium">
+              By initializing, you agree to our <span className="text-white underline underline-offset-2 cursor-pointer hover:text-[#ff9900] transition-colors">Terms of Service</span> and <span className="text-white underline underline-offset-2 cursor-pointer hover:text-[#ff9900] transition-colors">Privacy Protocol</span>.
+            </p>
+
           </div>
-          
-          {/* The missing closing tags and missing paragraph are restored here */}
-          <p className="text-xs text-slate-500 mt-6 font-medium">By initializing, you agree to our <span className="text-white underline cursor-pointer hover:text-[#ff9900]">Terms of Service</span> and <span className="text-white underline cursor-pointer hover:text-[#ff9900]">Privacy Protocol</span>.</p>
         </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }
