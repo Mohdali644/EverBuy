@@ -245,48 +245,74 @@ export default function Home() {
         ))}
       </section>
 
+      {/* 3. FEATURES BAR (Ultra Responsive 2x2 Grid to Flex Row) */}
       <section className="bg-white rounded-2xl md:rounded-[24px] shadow-[0_8px_30px_rgba(0,0,0,0.04)] mx-4 sm:mx-6 xl:mx-auto max-w-[1400px] mt-12 md:mt-[75px] mb-10 border border-slate-100">
         <div className="grid grid-cols-2 lg:flex lg:flex-row lg:justify-evenly gap-y-8 gap-x-4 p-6 sm:p-8">
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
-            <i className="fa-solid fa-truck-fast text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-1 transition-transform duration-300"></i>
+            <i className="fa-solid fa-truck-fast text-xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-x-7 transition-transform duration-300"></i>
             <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Fast Delivery</span>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
-            <i className="fa-solid fa-shield-halved text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-1 transition-transform duration-300"></i>
+            <i className="fa-solid fa-shield-halved text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-transition-transform duration-500 hover:skew-x-6"></i>
             <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Secure Payments</span>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
-            <i className="fa-solid fa-rotate-left text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-1 transition-transform duration-300 -scale-x-100"></i>
+            <i className="fa-solid fa-rotate-left text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-transition-transform duration-500 hover:rotate-180 -scale-x-100"></i>
             <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Easy Returns</span>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
-            <i className="fa-solid fa-headset text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-1 transition-transform duration-300"></i>
+            <i className="fa-solid fa-headset text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-5 transition-transform duration-300"></i>
             <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">24/7 Support</span>
           </div>
 
         </div>
       </section>
 
-      {/* 4. ULTRA ENGAGEMENT HUB */}
-      <section className="my-10 px-6 max-w-[1400px] mx-auto">
-        <div className="bg-gradient-to-br from-[#0f172a] to-[#1e293b] rounded-[55px] p-[20px_30px] flex flex-col md:flex-row justify-between items-center text-white shadow-2xl mb-10 mt-[125px] border border-white/10">
-          <div className="flex items-center gap-4">
-            <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]"></div>
-            <h2 className="text-[1.4rem] font-extrabold tracking-tight">Flash Drop Active</h2>
-            <div className="font-mono text-[1.5rem] font-black text-[#ff9900] bg-[#ff9900]/10 px-4 py-1.5 rounded-lg border border-[#ff9900]/20">
+      {/* 4. ULTRA ENGAGEMENT HUB / FLASH DROP BANNER (Large Premium Desktop, Fluid Mobile) */}
+      <section className="mx-4 sm:mx-6 mt-28 mb-10 flex justify-center relative z-20">
+        
+        {/* CHANGED: w-full max-w-[900px] makes it wide and substantial without stretching too thin */}
+        <div className="w-full max-w-[1100px] bg-gradient-to-r from-[#0a0f16] via-[#131b26] to-[#0a0f16] rounded-[28px] sm:rounded-[36px] p-4 sm:p-5 md:px-8 shadow-[0_20px_50px_rgba(0,0,0,0.25)] flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-0 border border-white/10 relative overflow-hidden transition-all group">
+
+          {/* Subtle Shimmer Sweep Effect */}
+          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent group-hover:animate-[shimmer_2s_infinite]"></div>
+
+          {/* Left Side: Scaled Up Title & Live Timer */}
+          <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-4 relative z-10">
+            
+            <div className="flex items-center gap-3 md:gap-4">
+              {/* Scaled up pulsing dot */}
+              <div className="relative flex h-3.5 w-3.5 shrink-0 items-center justify-center">
+                <span className="animate-ping absolute h-full w-full rounded-full bg-red-500 opacity-60"></span>
+                <span className="relative rounded-full h-3 w-3 bg-red-500 shadow-[0_0_15px_rgba(239,68,68,1)]"></span>
+              </div>
+              <span className="text-white font-black text-[1.1rem] mr-8 md:text-[1.3rem] uppercase drop-shadow-md whitespace-nowrap">
+                Flash Drop Active
+              </span>
+            </div>
+            
+            {/* Enlarged Dynamic Timer Box */}
+            <div className="bg-gradient-to-r from-[#ff9900]/10 to-[#ff3300]/10 border border-[#ff9900]/30 text-[#ff9900] font-mono font-black text-[1.1rem] md:text-[1.25rem] px-5 py-2 rounded-xl sm:rounded-2xl flex items-center tracking-widest shadow-[0_0_20px_rgba(255,153,0,0.15)]">
               {formatTime(timeLeft)}
             </div>
           </div>
-          <div className="bg-white/5 px-5 py-2.5 rounded-full border border-white/10 font-semibold text-[0.95rem] text-emerald-400 mt-4 md:mt-0">
-            <i className="fa-solid fa-users mr-2"></i> {shoppers.toLocaleString()} people shopping now
-          </div>
-        </div>
 
-        <div className="flex justify-between items-end mb-6">
+          {/* Right Side: Scaled Up Live Viewers */}
+          <div className="bg-white/5 border border-white/10 text-emerald-400 font-medium text-sm md:text-base px-6 py-3 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2.5 relative z-10 w-full sm:w-auto shrink-0 shadow-inner">
+            <i className="fa-solid fa-users text-emerald-500 animate-pulse text-lg"></i>
+            <span className="font-bold text-emerald-400 font-mono text-[1.15rem] md:text-[1.25rem]">{shoppers.toLocaleString()}</span> 
+            <span className="text-slate-300 hidden min-[450px]:inline-block font-semibold tracking-wide whitespace-nowrap">people shopping now</span>
+          </div>
+          
+        </div>
+      </section>
+
+        <section className="my-10 px-6 max-w-[1400px] mx-auto">
+        <div className="flex justify-between items-end mb-2">
           <h2 className="text-[2rem] font-black text-[#0f172a] tracking-tight">Trending Right Now</h2>
           <a href="#" className="font-bold text-[#ff9900] hover:text-[#e38800] transition-colors">View All <i className="fa-solid fa-arrow-right"></i></a>
         </div>
