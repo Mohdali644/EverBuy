@@ -255,7 +255,7 @@ export default function Home() {
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
-            <i className="fa-solid fa-shield-halved text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-transition-transform duration-500 hover:skew-x-6"></i>
+            <i className="fa-solid fa-shield-halved text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-transition-transform duration-500 hover:-scale-x-125"></i>
             <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Secure Payments</span>
           </div>
           
