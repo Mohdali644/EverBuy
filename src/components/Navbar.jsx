@@ -179,7 +179,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                     </div>
 
                     <button className="w-[36px] h-[36px] md:w-[42px] md:h-[42px] shrink-0 rounded-full border-none bg-[#ff9900] hover:bg-[#e38800] text-white text-[0.85rem] md:text-[0.9rem] cursor-pointer flex items-center justify-center transition-all duration-300 shadow-sm">
-                        <i className="fa-solid fa-magnifying-glass"></i>
+                        <i className="fa-solid text-lg fa-magnifying-glass"></i>
                     </button>
                   </div>
 
@@ -203,7 +203,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                 {/* PROFILE - Bulletproof Auth Fallbacks */}
                 <div className="relative flex items-center">
                   <div 
-                    className={`flex items-center gap-1.5 sm:gap-2 h-9 sm:h-10 px-1.5 sm:px-2 rounded-full cursor-pointer transition-all duration-300 hover:bg-white/10 group/profile ${user ? 'pr-2.5 sm:pr-3 bg-white/5 border border-white/10' : ''}`}
+                    className={`flex items-center gap-1.5 ml-6 sm:gap-2 h-9 sm:h-10 px-1.5 sm:px-2 rounded-full cursor-pointer transition-all duration-300 hover:bg-white/10 group/profile ${user ? 'pr-2.5 sm:pr-3 bg-white/5 border border-white/10' : ''}`}
                     onClick={handleProfileClick}
                   >
                     {user ? (
@@ -245,7 +245,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                 {/* Returns & Orders - Icon on Mobile, Text on Desktop */}
                 <Link 
                   to="/orders" 
-                  className="flex flex-col justify-center items-center md:items-start h-9 sm:h-10 w-9 sm:w-auto md:px-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 relative group outline-none focus:outline-none"
+                  className="flex flex-col ml-3 mr-3 justify-center items-center md:items-start h-9 sm:h-10 w-9 sm:w-auto md:px-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 relative group outline-none focus:outline-none"
                 >
                   {hasActiveOrder && (
                     <span className="absolute top-0 right-0 flex h-2.5 w-2.5 md:h-3 md:w-3 translate-x-0.5 md:translate-x-1 -translate-y-0.5 md:-translate-y-1">
