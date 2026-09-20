@@ -327,7 +327,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
               
               <h3 className="text-2xl font-black text-white tracking-wide mb-4">Coming Soon</h3>
               <p className="text-slate-400 font-medium text-[0.85rem] leading-snug mb-5 px-2">
-                <span className="text-[#ff9900] tracking-wide font-bold">{comingSoon}</span> is currently undergoing quantum polishing.
+                <span className="text-[#ff9900] tracking-wide font-bold">{comingSoon}</span> is currently undergoing polishing.
               </p>
               
               <button 
