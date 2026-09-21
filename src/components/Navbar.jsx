@@ -142,7 +142,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
               
               {/* Deliver To (Hides on tablets/mobile to save space) */}
               <div 
-                className="hidden xl:flex flex-col justify-center h-10 px-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 group/loc relative" 
+                className="hidden xl:flex flex-col mr-6 ml-5 justify-center h-10 px-3 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/10 group/loc relative" 
                 onClick={() => setLocOpen(true)}
               >
                   <p className="text-slate-400 text-[0.75rem] pl-5 m-0 font-medium group-hover/loc:text-white transition-colors">Deliver To</p>
