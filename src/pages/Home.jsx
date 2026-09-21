@@ -198,7 +198,7 @@ export default function Home() {
           ></div>
         ))}
         <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-[#eaeded] to-transparent z-10"></div>
-       {/* TEXT ROTATOR */}
+
         {/* TEXT ROTATOR (Ultra-Fluid Responsive) */}
         <div className="relative z-20 pb-8 w-full flex justify-center px-3 sm:px-0">
           <div className="w-full sm:w-max max-w-[800px] bg-white/95 backdrop-blur-md rounded-full p-1.5 sm:p-2 shadow-[0_15px_35px_rgba(0,0,0,0.06)] flex items-center justify-between gap-2 sm:gap-4 border border-white transition-all">
@@ -212,7 +212,7 @@ export default function Home() {
               
               {/* Dynamic Text - Uses flex-1 and min-w-0 to act like a liquid */}
               <div className="flex-1 flex items-center overflow-hidden h-6 min-w-0">
-                <span className={`text-slate-900 font-bold text-[0.7rem] sm:text-[0.95rem] tracking-tight truncate w-full ${animClass}`}>
+                <span className={`text-slate-900 font-bold text-[0.7rem] sm:text-[0.95rem] tracking-normal truncate w-full ${animClass}`}>
                   {heroMessages[msgIndex]}
                 </span>
               </div>
