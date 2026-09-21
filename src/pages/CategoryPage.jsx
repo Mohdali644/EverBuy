@@ -114,7 +114,7 @@ export default function CategoryPage() {
 {/* */}
       <button 
           onClick={() => navigate('/')}
-          className="fixed top-32 left-6 z-50 flex items-center gap-2 text-black hover:text-white font-bold transition-all hover:-translate-x-1 bg-white/20 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border-white/20 shadow-md"
+          className="fixed top-32 left-6 z-50 flex items-center gap-2 text-black hover:text-white font-bold mt-8 transition-all hover:-translate-x-1 bg-white/20 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border-white/20 shadow-md"
         >
           <i className="fa-solid fa-arrow-left text-center md:text-base"></i> <span className="hidden text-center sm:inline">Back to Home</span>
         </button>
