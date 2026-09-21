@@ -280,14 +280,17 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
           </nav>
 
           {/* TOUCH-PAN SUB-NAV BELT - Wired to trigger the Coming Soon Modal */}
-          <div className={`transition-all duration-500 overflow-x-auto flex-nowrap whitespace-nowrap scrollbar-hide flex items-center px-4 sm:px-6 gap-6 text-[0.8rem] sm:text-[0.85rem] font-medium max-w-[1800px] mx-auto tracking-wide overscroll-x-contain touch-pan-x ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[35px] sm:h-[40px] opacity-100 border-t border-white/10'}`}>
-              <button className="flex items-center gap-1.5 px-3 py-1 rounded-full text-white bg-white/5 hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0" onClick={() => setInfoOpen("All Categories")}>
-                  <i className="fa-solid fa-bars"></i> All
+          <div className={`transition-all py-1 duration-500 overflow-x-auto flex-nowrap whitespace-nowrap scrollbar-hide flex items-center px-4 sm:px-6 gap-6 text-[0.8rem] sm:text-[0.85rem] font-medium max-w-[1800px] mx-auto tracking-wide overscroll-x-contain touch-pan-x ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[35px] sm:h-[40px] opacity-100 border-t border-white/10'}`}>
+              <button className="group flex items-center gap-1.5 px-3 py-1 rounded-full shrink-0 text-[14px] text-white bg-white/10 hover:bg-gray-100 hover:text-black transition-all outline-none focus:outline-none" onClick={() => setInfoOpen('All Categories')}
+>
+            <i className="fa-solid fa-bars text-lg transition-transform duration-300 group-hover:rotate-90"></i>
+              <span>All</span>
               </button>
-              <button onClick={() => setComingSoon("Today's Deals")} className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0">Today's Deals</button>
-              <button onClick={() => setComingSoon("Customer Service")} className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0">Customer Service</button>
-              <button onClick={() => setComingSoon("Registry")} className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0">Registry</button>
-              <button onClick={() => setComingSoon("Gift Cards")} className="px-3 py-1 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all outline-none focus:outline-none shrink-0">Gift Cards</button>
+
+              <button onClick={() => setComingSoon("Today's Deals")} className="px-3 py-1 ml-5 mr-6 rounded-full text-slate-100 bg:text-white bg-white/10 hover:bg-gray-100 hover:text-black transition-all outline-none focus:outline-none shrink-0">Today's Deals</button>
+              <button onClick={() => setComingSoon("Customer Service")} className="px-3 py-1 mr-7 rounded-full text-slate-100 bg:text-white bg-white/10 hover:bg-gray-100 hover:text-black transition-all outline-none focus:outline-none shrink-0">Customer Service</button>
+              <button onClick={() => setComingSoon("Registry")} className="px-3 py-1 mr-7 rounded-full text-slate-100 bg:text-white bg-white/10 hover:bg-gray-100 hover:text-black transition-all outline-none focus:outline-none shrink-0">Registry</button>
+              <button onClick={() => setComingSoon("Gift Cards")} className="px-3 py-1 mr-7 rounded-full text-slate-100 bg:text-white bg-white/10 hover:bg-gray-100 hover:text-black transition-all outline-none focus:outline-none shrink-0">Gift Cards</button>
           </div>
         </div>
       </header>
