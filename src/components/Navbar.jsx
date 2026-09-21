@@ -280,7 +280,11 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
           </nav>
 
           {/* TOUCH-PAN SUB-NAV BELT - Wired to trigger the Coming Soon Modal */}
-          <div className={`transition-all py-1 duration-500 overflow-x-auto flex-nowrap whitespace-nowrap scrollbar-hide flex items-center px-4 sm:px-6 gap-6 text-[0.8rem] sm:text-[0.85rem] font-medium max-w-[1800px] mx-auto tracking-wide overscroll-x-contain touch-pan-x ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[35px] sm:h-[40px] opacity-100 border-t border-white/10'}`}>
+          
+                  <div
+  className={`transition-all py-1 duration-500 sm:overflow-x-hidden overflow-x-scroll overflow-y-hidden scrollbar-hide flex-nowrap whitespace-nowrap flex items-center px-4 sm:px-6 gap-6 text-[0.8rem] sm:text-[0.85rem] font-medium max-w-[1800px] mx-auto tracking-wide overscroll-x-contain touch-pan-x 
+  ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-[35px] sm:h-[40px] opacity-100 border-t border-white/10'}`}
+>
               <button className="group flex items-center gap-1.5 px-3 py-1 rounded-full shrink-0 text-[14px] text-white bg-white/10 hover:bg-gray-100 hover:text-black transition-all outline-none focus:outline-none" onClick={() => setInfoOpen('All Categories')}
 >
             <i className="fa-solid fa-bars text-lg transition-transform duration-300 group-hover:rotate-90"></i>
