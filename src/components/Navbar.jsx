@@ -184,14 +184,14 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
               onClick={() => setLocOpen(true)}
             >
               <p className="text-slate-400 tracking-wide text-[0.75rem] pl-5 m-0 font-semibold group-hover/loc:text-white transition-colors">
-  Deliver To
-</p>
-<div className="flex items-center gap-1.5">
-  <i className="fa-solid fa-location-dot mb-1 text-green-500 text-[1.10rem] transition-transform duration-500 group-hover/loc:rotate-[360deg] group-hover/loc:scale-125"></i>
-  <p className="text-[0.98rem] tracking-wide font-bold m-0 text-white">
-    {localStorage.getItem("everbuy_location") || "India"}
-  </p>
-</div>
+                Deliver To
+              </p>
+              <div className="flex items-center gap-1.5">
+                <i className="fa-solid fa-location-dot mb-1 text-green-500 text-[1.10rem] transition-transform duration-500 group-hover/loc:rotate-[360deg] group-hover/loc:scale-125"></i>
+                <p className="text-[0.98rem] tracking-wide font-bold m-0 text-white">
+                  {localStorage.getItem("everbuy_location") || "India"}
+                </p>
+              </div>
             </div>
 
             {/* SEARCH BAR - Order Last on Mobile, Auto-expands */}
