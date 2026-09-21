@@ -106,31 +106,37 @@ export default function CategoryPage() {
   const category = matchedKey ? categories[matchedKey] : categories.health;
 
   return (
-    <main className="pt-[100px] min-h-screen relative">
+    // 1. MAIN CONTAINER
+    <main className="relative min-h-screen w-full flex flex-col pt-28 sm:pt-32 md:pt-36 overflow-x-hidden bg-slate-50 pb-20">
       
-      {/* Floating Back to Home Button */}
-      <div className="absolute top-[120px] left-6 md:left-12 z-10">
-        
-{/* */}
-      <button 
+      {/* 2. ADAPTIVE BACK BUTTON: Normal flow on mobile (no collisions), absolute floating on large screens */}
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 xl:px-0 mb-6 lg:mb-0 lg:absolute lg:top-36 lg:left-8 xl:left-12 z-50 flex justify-start">
+        <button 
           onClick={() => navigate('/')}
-          className="fixed top-32 left-6 z-50 flex items-center gap-2 text-black hover:text-white font-bold mt-8 transition-all hover:-translate-x-1 bg-white/20 hover:bg-[#f78902] px-4 py-2 md:px-5 md:py-2.5 rounded-full backdrop-blur-md border-white/20 shadow-md"
+          className="group flex items-center mt-12 gap-2 sm:gap-2.5 bg-white/90 hover:bg-[#ff9900] text-slate-800 hover:text-white font-bold px-4 py-2.5 sm:px-5 sm:py-3 rounded-full backdrop-blur-xl border border-slate-200 hover:border-[#ff9900] shadow-[0_8px_20px_rgba(0,0,0,0.06)] transition-all duration-300 lg:hover:-translate-x-1 hover:shadow-[0_15px_35px_rgba(255,153,0,0.3)]"
         >
-          <i className="fa-solid fa-arrow-left text-center md:text-base"></i> <span className="hidden text-center sm:inline">Back to Home</span>
+          <i className="fa-solid fa-arrow-left text-sm sm:text-base transition-transform group-hover:-translate-x-1"></i> 
+          <span className="tracking-tight text-sm sm:text-base">Back to Home</span>
         </button>
-
       </div>
 
-      <section className="py-[90px] px-6 rounded-3xl mt-5 text-center bg-[#f8f9fa]">
-        <h1 className="text-[2.5rem] text-[#111] font-bold mb-2">{category.title}</h1>
-        <p className="text-gray-600">Explore top-rated essentials and premium selections.</p>
+      {/* 3. CATEGORY HEADER */}
+      <section className="relative mx-4 sm:mx-6 xl:mx-auto max-w-[1400px] py-6 sm:py-24 px-4 sm:px-6 text-center bg-white rounded-[24px] sm:rounded-[36px] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col items-center justify-center">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl text-slate-900 font-black mb-3 sm:mb-5 tracki drop-shadow-sm px-2">
+          {category.title}
+        </h1>
+        <p className="text-slate-500 font-medium text-base sm:text-lg max-w-[90%] sm:max-w-2xl mx-auto">
+          Explore top-rated essentials and premium selections.
+        </p>
       </section>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[30px] p-[40px_24px] max-w-[1400px] mx-auto">
+      {/* 4. PRODUCT GRID */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-8 px-4 sm:px-6 xl:px-0 py-10 sm:py-16 max-w-[1400px] mx-auto w-full">
         {category.products.map((product) => (
           <ProductCard key={product.id} {...product} />
         ))}
       </section>
+      
     </main>
   );
-}
+}  
