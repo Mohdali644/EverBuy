@@ -226,17 +226,14 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                   {!user && showTooltip && (
                     <div 
                       onClick={(e) => { e.stopPropagation(); setShowTooltip(false); setSignInOpen(true); }}
-                      className="absolute top-[50px] right-0 z-[1000] w-max max-w-[90vw] bg-white hover:bg-slate-50 cursor-pointer flex items-center gap-2.5 rounded-full px-4 py-2 shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-slate-200 animate-subtle-float transition-colors group/tooltip"
+                      className="absolute top-[50px] right-0 z-[1000] mt-[6px] w-max max-w-[90vw] bg-white hover:bg-slate-50 cursor-pointer flex items-center gap-2.5 rounded-full px-4 py-2 shadow-[0_15px_35px_rgba(0,0,0,0.5)] border border-slate-200 animate-subtle-float transition-colors group/tooltip"
                     >
                       <div className="absolute -top-[5px] right-[15px] sm:right-[20px] w-2.5 h-2.5 bg-white border-t border-l border-slate-200 rotate-45 transition-colors group-hover/tooltip:bg-slate-50"></div>
                       <div className="relative z-10 flex items-center gap-2.5 overflow-hidden">
-                        <div className="w-5 h-5 rounded-full bg-[#ff9900]/10 flex items-center justify-center shrink-0">
-                          <i className="fa-solid fa-bolt text-[#ff9900] text-[0.7rem]"></i>
-                        </div>
                         <span className="text-slate-900 font-black text-[0.75rem] sm:text-[0.8rem] whitespace-nowrap truncate">
                           Sign in for the best experience
                         </span>
-                        <i className="fa-solid fa-arrow-right text-slate-400 group-hover/tooltip:text-[#ff9900] group-hover/tooltip:translate-x-0.5 transition-all text-[0.9rem] ml-1 shrink-0"></i>
+                        <i className="fa-solid fa-arrow-right pr-[3px] text-slate-400 group-hover/tooltip:text-[#ff9900] group-hover/tooltip:translate-x-0.5 transition-all text-[0.95rem] ml-1 shrink-0"></i>
                       </div>
                     </div>
                   )}

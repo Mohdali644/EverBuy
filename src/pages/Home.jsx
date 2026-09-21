@@ -23,9 +23,9 @@ export default function Home() {
   // --- 1. HERO CAROUSEL LOGIC ---
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
+    "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=100&w=1600&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1727407209320-1fa6ae60ee05?q=80&w=1169&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=100&w=1600&auto=format&fit=crop"
   ];
 
   useEffect(() => {
