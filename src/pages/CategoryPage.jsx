@@ -13,7 +13,7 @@ export default function CategoryPage() {
         { id: 'h1', title: 'Advanced Whey Protein', price: 45.99, image: 'https://rukminim2.flixcart.com/image/1536/1536/xif0q/protein-supplement/h/q/h/whey-protein-advance-whey-2-lbs-chocolate-adv2chocolate-muscle-original-imahg3qj6rgpzmwf.jpeg?q=90' },
         { id: 'h2', title: 'Smart Yoga Mat', price: 89.00, image: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600&q=80' },
         { id: 'h3', title: 'Organic Skincare Set', price: 120.00, image: 'https://i.etsystatic.com/36472234/r/il/0f03e6/4347187396/il_fullxfull.4347187396_pw45.jpg' },
-        { id: 'h4', title: 'Ergonomic Massage Gun', price: 199.50, image: 'https://cultstore.com/cdn/shop/files/01Withoutname_2.jpg?v=1784633822&width=3000' }
+        { id: 'h4', title: 'Ergonomic Massage Gun', price: 199.50, image: 'https://i5.walmartimages.com/seo/Naipo-Mini-Massage-Gun-Deep-Tissue-Muscle-Massager-with-Ergonomic-Handle-USB-Charging-Light-Portable_47f3aa11-fb8d-4d87-814d-fb044f3bb632.1f2c2853cd73201afd5f7d4e57cec81c.jpeg' }
       ]
     },
     fashion: {
