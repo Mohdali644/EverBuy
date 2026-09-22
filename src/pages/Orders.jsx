@@ -37,19 +37,28 @@ export default function Orders() {
         {/* FIXED HEADER: The button is now inside the flex container on desktop so it NEVER collides with text */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6 border-b border-white/10 pb-6 mb-8 sm:mb-10 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[0.65rem] sm:text-xs font-black uppercase tracking-widest rounded-full mb-3 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+            <div className="inline-flex items-center gap-2 px-3 mt-4 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[0.65rem] sm:text-xs font-black uppercase tracking-widest rounded-full mb-3 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
               Live Telemetry Active
             </div>
             <h1 className="text-3xl sm:text-4xl font-black text-white tracking-wide leading-tight">Manifest & Routing</h1>
           </div>
 
-          {/* CHAMELEON BUTTON: Floats on mobile, sits naturally in the flex grid on desktop */}
+          {/* CHAMELEON BUTTON: Perfect Mobile FAB & Sleek Desktop Pill */}
           <button 
             onClick={() => navigate('/')}
-            className="fixed z-[100] bottom-6 right-4 sm:bottom-8 sm:right-8 md:static md:flex items-center justify-center gap-2 text-white font-bold transition-all hover:scale-110 md:hover:scale-100 active:scale-95 bg-gradient-to-r from-[#ff9900] to-[#ff3300] md:bg-white/10 md:hover:bg-[#f78902] w-14 h-14 md:w-auto md:h-auto md:px-6 md:py-2.5 rounded-full backdrop-blur-md border border-transparent md:border-white/20 shadow-[0_10px_25px_rgba(255,153,0,0.4)] md:shadow-md group shrink-0"
+            className="group flex items-center justify-center gap-2 text-white font-bold transition-all duration-300 shrink-0
+              /* MOBILE STATE: Perfect Floating Action Circle */
+              fixed z-[100] bottom-6 right-5 sm:bottom-8 sm:right-8 w-14 h-14 p-0
+              bg-gradient-to-r from-[#ff9900] to-[#ff3300] rounded-full 
+              shadow-[0_12px_30px_rgba(255,153,0,0.4)] active:scale-95
+              
+              /* DESKTOP STATE: Static Glassmorphism Pill */
+              md:static md:w-auto md:h-auto md:px-6 md:py-2.5 
+              md:bg-none md:bg-white/10 md:hover:bg-[#fe8505] 
+              md:border md:border-white/20 backdrop-blur-md md:shadow-md md:hover:-translate-x-1"
           >
-            <i className="fa-solid fa-arrow-left text-xl md:text-base md:group-hover:-translate-x-1 transition-transform"></i> 
+            <i className="fa-solid fa-arrow-left text-xl md:text-base md:group-hover:-translate-x-2 transition-transform duration-300"></i> 
             <span className="hidden md:inline">Return to Store</span>
           </button>
         </div>

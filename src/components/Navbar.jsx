@@ -424,7 +424,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-black text-white tracking-wide mb-4">
+              <h3 className="text-4xl font-black text-white tracking-wide mb-4">
                 Coming Soon
               </h3>
               <p className="text-slate-400 font-medium text-[0.85rem] leading-snug mb-5 px-2">
