@@ -114,3 +114,12 @@ Navigate to http://localhost:5173 in your browser.
 * Authentication Engine: Implementing JWT (JSON Web Tokens) or OAuth for secure, encrypted user login sessions.
 
 * Secure Payment Gateway: Integrating Stripe APIs to process PCI-compliant transactions within the checkout UI
+
+<h2>👨‍💻 Author</h2>
+
+  <h3><b>Mohd Ali</b></h3>
+  <p>Information Technology Undergraduate & Aspiring Frontend Developer 📍 Hyderabad, India</p>
+  <a href="#"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+  <a href="https://www.linkedin.com/in/mohd-ali-dev/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+  <a href="https://mohdali644.github.io/Folio/"><img src="https://img.shields.io/badge/Portfolio-2563EB?style=for-the-badge&logo=globe&logoColor=white" alt="Portfolio"/></a>
+</div>
