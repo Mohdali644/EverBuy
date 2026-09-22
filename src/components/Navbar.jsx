@@ -221,7 +221,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                 </div>
 
                 <button className="w-[36px] h-[36px] md:w-[42px] md:h-[42px] shrink-0 rounded-full border-none bg-[#ff9900] hover:bg-[#e38800] text-white text-[0.85rem] md:text-[0.9rem] cursor-pointer flex items-center justify-center transition-all duration-300 shadow-sm">
-                  <i className="fa-solid text-lg fa-magnifying-glass"></i>
+                  <i className="fa-solid group-hover:-transition-transform duration-500 hover:-scale-x-100 text-lg fa-magnifying-glass"></i>
                 </button>
               </div>
 

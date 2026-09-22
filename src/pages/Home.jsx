@@ -250,28 +250,29 @@ export default function Home() {
         <div className="grid grid-cols-2 lg:flex lg:flex-row lg:justify-evenly gap-y-8 gap-x-4 p-6 sm:p-8">
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
-            <i className="fa-solid fa-truck-fast text-xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-x-7 transition-transform duration-300"></i>
+            <i className="fa-solid fa-truck-fast text-xl sm:text-[1.75rem] text-[#ff9900] transition-transform duration-300 group-hover:-translate-x-6"></i>
             <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Fast Delivery</span>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
-            <i className="fa-solid fa-shield-halved text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-transition-transform duration-500 hover:-scale-x-125"></i>
+            <i className="fa-solid fa-shield-halved text-2xl sm:text-[1.75rem] text-[#ff9900] transition-transform duration-500 group-hover:-scale-x-100"></i>
             <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Secure Payments</span>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
-            <i className="fa-solid fa-rotate-left text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-transition-transform duration-500 hover:rotate-180 -scale-x-100"></i>
+            {/* Changed from -rotate-180 to -rotate-[360deg] for a full, seamless circle */}
+            <i className="fa-solid fa-rotate-left text-2xl sm:text-[1.75rem] text-[#ff9900] -scale-x-100 transition-transform duration-500 group-hover:-rotate-[-360deg]"></i>
             <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">Easy Returns</span>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 group cursor-default">
-            <i className="fa-solid fa-headset text-2xl sm:text-[1.75rem] text-[#ff9900] group-hover:-translate-y-5 transition-transform duration-300"></i>
+            <i className="fa-solid fa-headset text-2xl sm:text-[1.75rem] text-[#ff9900] transition-transform duration-300 group-hover:-translate-y-4"></i>
             <span className="font-bold text-[#37475a] text-xs sm:text-sm md:text-base text-center">24/7 Support</span>
           </div>
 
         </div>
       </section>
-
+          
       {/* 4. ULTRA ENGAGEMENT HUB / FLASH DROP BANNER (Large Premium Desktop, Fluid Mobile) */}
       <section className="mx-4 sm:mx-6 mt-28 mb-10 flex justify-center relative z-20">
         
