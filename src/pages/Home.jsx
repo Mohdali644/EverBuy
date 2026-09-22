@@ -456,112 +456,115 @@ export default function Home() {
       </style>
 
       {/* 6. PLATFORM ECOSYSTEM (ULTRA BENTO GRID) */}
-      <section className="relative transform-gpu px-4 sm:px-6 max-w-[1400px] mx-auto my-32 pb-10">
+      <section className="relative px-4 sm:px-6 max-w-[1300px] mx-auto my-20 lg:my-28 pb-10">
         {/* Animated Tech Grid Background */}
         <div className="absolute inset-0 tech-grid [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)] pointer-events-none -z-10"></div>
 
-        <div className="flex flex-col items-center text-center mb-16 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-black uppercase tracking-[0.2em] mb-4 shadow-[0_10px_20px_rgba(0,0,0,0.1)]">
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-16 relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 backdrop-blur-md text-white text-[0.65rem] sm:text-xs font-black uppercase tracking-[0.2em] mb-4 shadow-[0_10px_20px_rgba(0,0,0,0.1)] border border-white/10">
             <div className="w-2 h-2 rounded-full bg-[#ff9900] animate-pulse"></div>
             Platform Architecture
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight drop-shadow-sm">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight drop-shadow-sm px-2">
             The EverBuy <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff9900] to-[#ff3300]">Ecosystem</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+        {/* ULTRA COMPACT 3-COLUMN BENTO GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 relative z-10">
           
-          {/* Bento Box 1: EverBuy Obsidian (Holographic Glassmorphism) */}
-          <div className="md:col-span-2 bg-[#0a0f16] rounded-[32px] p-1 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] group cursor-pointer">
-            {/* Rotating Holographic Orb */}
-            <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-[#ff9900] via-[#ff3300] to-[#8b5cf6] blur-[100px] opacity-20 group-hover:opacity-40 animate-spin-slow rounded-full pointer-events-none transition-opacity duration-700 transform-gpu"></div>
+          {/* Bento Box 1: EverBuy Obsidian (Glassmorphism) - Spans 2 cols on tablet & desktop */}
+          <div className="md:col-span-2 lg:col-span-2 bg-[#0a0f16] rounded-[24px] sm:rounded-[32px] p-1 relative overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.15)] group cursor-pointer">
+            {/* Liquid Mesh Gradient Orb */}
+            <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-gradient-to-r from-[#ff9900] via-[#ff3300] to-[#8b5cf6] blur-[80px] sm:blur-[100px] opacity-20 group-hover:opacity-40 animate-spin-slow rounded-full pointer-events-none transition-opacity duration-700 transform-gpu"></div>
             
-            <div className="bg-[#0f172a]/80 backdrop-blur-2xl w-full h-full rounded-[28px] p-8 md:p-12 relative z-10 border border-white/10 flex flex-col justify-center">
-              <div className="flex items-center gap-3 mb-6">
-                <i className="fa-brands fa-galactic-republic text-4xl text-[#ff9900] drop-shadow-[0_0_15px_rgba(255,153,0,0.8)]"></i>
-                <span className="text-white/80 font-black tracking-[0.2em] uppercase text-xs">Premium Tier</span>
+            <div className="bg-[#0f172a]/70 backdrop-blur-3xl w-full h-full rounded-[20px] sm:rounded-[28px] p-6 sm:p-8 lg:p-10 relative z-10 border border-white/10 flex flex-col justify-center">
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <i className="fa-brands fa-galactic-republic text-2xl sm:text-3xl text-[#ff9900] drop-shadow-[0_0_15px_rgba(255,153,0,0.8)]"></i>
+                <span className="text-white/80 font-black tracking-[0.2em] uppercase text-[0.65rem] sm:text-xs">Premium Tier</span>
               </div>
-              <h3 className="text-4xl md:text-6xl font-black text-white leading-none mb-4 tracking-tight drop-shadow-lg">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-none mb-3 sm:mb-4 tracking-tight drop-shadow-lg">
                 EverBuy <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff9900] to-[#ff3300]">Obsidian</span>
               </h3>
-              <p className="text-slate-400 text-lg max-w-md mb-8 font-medium">Unlock zero-friction checkout, unlimited free shipping, and exclusive early access to highly anticipated tech drops.</p>
+              <p className="text-slate-400 text-sm sm:text-base lg:text-lg max-w-md mb-6 sm:mb-8 font-medium leading-relaxed">
+                Unlock zero-friction checkout, unlimited free shipping, and exclusive early access to highly anticipated tech drops.
+              </p>
               
               {/* Magnetic Shimmer Button */}
-              <button className="relative overflow-hidden w-max bg-white text-slate-900 px-8 py-4 rounded-full font-black text-lg transition-transform hover:-translate-y-1 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]">
-                <span className="relative z-10 flex items-center gap-2">Upgrade Account <i className="fa-solid fa-arrow-right"></i></span>
+              <button className="relative overflow-hidden w-max bg-white text-slate-900 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-black text-sm sm:text-base transition-transform active:scale-95 hover:-translate-y-1 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] group/btn">
+                <span className="relative z-10 flex items-center gap-2">Upgrade Account <i className="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform"></i></span>
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-12 translate-x-[-150%] animate-shimmer"></div>
               </button>
             </div>
           </div>
 
-          {/* Bento Box 2: Localized Logistics (Levitating UI) */}
-          <div className="bg-gradient-to-br from-[#ff9900] to-[#ff4500] rounded-[32px] p-8 relative overflow-hidden shadow-[0_20px_40px_rgba(255,153,0,0.3)] group cursor-pointer">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay"></div>
-            
-            {/* Speed lines background */}
-            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.4),transparent_50%)]"></div>
+          {/* Bento Box 2: Localized Logistics (1 col on tablet & desktop) */}
+          <div className="bg-gradient-to-br from-[#ff9900] to-[#ff4500] rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 relative overflow-hidden shadow-[0_15px_30px_rgba(255,153,0,0.3)] group cursor-pointer flex flex-col">
+            <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:16px_16px] opacity-[0.15]"></div>
+            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.3),transparent_60%)]"></div>
 
             <div className="relative z-10 flex flex-col h-full">
-              <div className="w-16 h-16 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center text-white text-3xl mb-8 shadow-[0_10px_20px_rgba(0,0,0,0.1)] border border-white/40 animate-float">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-xl rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl mb-6 shadow-[0_10px_20px_rgba(0,0,0,0.1)] border border-white/40 animate-float">
                 <i className="fa-solid fa-bolt-lightning drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"></i>
               </div>
-              <h3 className="text-3xl font-black text-white mb-3 leading-tight tracking-tight drop-shadow-md">Hyper-Local<br/>Logistics</h3>
-              <p className="text-orange-50 font-medium text-sm md:text-base leading-relaxed">EverBuy Prime same-day delivery routing is now active for all orders within your jurisdiction.</p>
-              <div className="mt-auto pt-8">
-                <span className="text-white font-black flex items-center gap-2 group-hover:gap-4 transition-all tracking-wide">Track Network <i className="fa-solid fa-truck-fast"></i></span>
+              <h3 className="text-2xl sm:text-3xl font-black text-white mb-2 leading-tight tracking-tight drop-shadow-md">Hyper-Local<br/>Logistics</h3>
+              <p className="text-orange-50 font-medium text-xs sm:text-sm leading-relaxed mb-6">EverBuy Prime same-day delivery routing is now active for all orders within your jurisdiction.</p>
+              <div className="mt-auto">
+                <span className="text-white font-black flex items-center gap-2 group-hover:gap-3 transition-all tracking-wide text-sm sm:text-base">Track Network <i className="fa-solid fa-truck-fast"></i></span>
               </div>
             </div>
           </div>
 
-          {/* Bento Box 3: Bank-Grade Security (Neon Cyberpunk) */}
-          <div className="bg-[#022c22] rounded-[32px] p-1 relative overflow-hidden shadow-[0_20px_40px_rgba(16,185,129,0.2)] group cursor-pointer">
+          {/* Bento Box 3: Bank-Grade Security (1 col on tablet & desktop) */}
+          <div className="bg-[#022c22] rounded-[24px] sm:rounded-[32px] p-1 relative overflow-hidden shadow-[0_15px_30px_rgba(16,185,129,0.2)] group cursor-pointer">
             {/* Radar Sweep Effect */}
             <div className="absolute top-0 right-0 w-full h-full bg-[conic-gradient(from_90deg_at_80%_20%,transparent_0deg,#10b981_360deg)] opacity-10 group-hover:opacity-30 animate-spin-slow transition-opacity duration-500"></div>
 
-            <div className="bg-[#064e3b]/90 backdrop-blur-xl w-full h-full rounded-[28px] p-8 relative z-10 border border-[#10b981]/20 flex flex-col">
-              <div className="w-16 h-16 bg-[#10b981] rounded-2xl flex items-center justify-center text-white text-3xl mb-8 shadow-[0_0_30px_rgba(16,185,129,0.6)] group-hover:scale-110 transition-transform duration-500 border border-emerald-300">
+            <div className="bg-[#064e3b]/90 backdrop-blur-xl w-full h-full rounded-[20px] sm:rounded-[28px] p-6 sm:p-8 relative z-10 border border-[#10b981]/20 flex flex-col">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#10b981] rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl mb-6 shadow-[0_0_20px_rgba(16,185,129,0.5)] group-hover:scale-110 transition-transform duration-500 border border-emerald-300">
                 <i className="fa-solid fa-shield-halved"></i>
               </div>
-              <h3 className="text-3xl font-black text-white mb-3 leading-tight tracking-tight">AES-256<br/>Encryption</h3>
-              <p className="text-emerald-100/70 font-medium text-sm md:text-base leading-relaxed">Every transaction is tokenized. Your raw financial data never touches our servers.</p>
+              <h3 className="text-2xl sm:text-3xl font-black text-white mb-2 leading-tight tracking-tight">AES-256<br/>Encryption</h3>
+              <p className="text-emerald-100/70 font-medium text-xs sm:text-sm leading-relaxed mb-6">Every transaction is tokenized. Your raw financial data never touches our servers.</p>
               
-              {/* Fake Terminal Line */}
-              <div className="mt-6 bg-black/40 rounded-lg p-3 font-mono text-[0.65rem] text-emerald-400 border border-emerald-900/50 flex items-center gap-2">
+              <div className="bg-black/40 rounded-lg p-2.5 font-mono text-[0.6rem] sm:text-[0.65rem] text-emerald-400 border border-emerald-900/50 flex items-center gap-2 mb-6">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
                 <span>Status: Fully Encrypted</span>
               </div>
 
-              <div className="mt-auto pt-6">
-                <span className="text-[#34d399] font-black flex items-center gap-2 group-hover:gap-4 transition-all tracking-wide">View Protocol <i className="fa-solid fa-code"></i></span>
+              <div className="mt-auto">
+                <span className="text-[#34d399] font-black flex items-center gap-2 group-hover:gap-3 transition-all tracking-wide text-sm sm:text-base">View Protocol <i className="fa-solid fa-code"></i></span>
               </div>
             </div>
           </div>
 
-          {/* Bento Box 4: Mobile App (Floating 3D Mockup) */}
-          <div className="md:col-span-2 bg-white rounded-[32px] p-8 md:p-12 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-slate-200 flex flex-col sm:flex-row items-center justify-between group cursor-pointer">
-            <div className="relative z-10 sm:w-[55%] mb-8 sm:mb-0">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-xs font-bold uppercase tracking-widest mb-4">
+          {/* Bento Box 4: Mobile App (Spans 2 cols on desktop) */}
+          <div className="md:col-span-2 lg:col-span-2 bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 lg:p-10 relative overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-slate-200 flex flex-col sm:flex-row items-center justify-between group cursor-pointer gap-6 sm:gap-0">
+            <div className="relative z-10 w-full sm:w-[55%] text-center sm:text-left order-2 sm:order-1">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[0.65rem] sm:text-xs font-bold uppercase tracking-widest mb-3 sm:mb-4">
                 <i className="fa-brands fa-app-store-ios text-slate-800"></i> iOS & Android
               </div>
-              <h3 className="text-4xl font-black text-slate-900 mb-4 tracking-tight leading-tight">Shop from absolutely anywhere.</h3>
-              <p className="text-slate-500 font-medium mb-8 text-lg">Download the EverBuy mobile app for real-time order tracking and AR product previews.</p>
-              <div className="flex flex-wrap gap-3">
-                <button className="bg-slate-900 hover:bg-black text-white px-6 py-4 rounded-2xl font-bold flex items-center gap-3 transition-all hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:-translate-y-1">
-                  <i className="fa-brands fa-apple text-2xl"></i> App Store
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mb-3 sm:mb-4 tracking-tight leading-tight">Shop from absolutely anywhere.</h3>
+              <p className="text-slate-500 font-medium mb-6 sm:mb-8 text-sm sm:text-base">Download the EverBuy mobile app for real-time order tracking and AR product previews.</p>
+              
+              {/* Flex-wrap prevents buttons from breaking layout on small phones */}
+              <div className="flex flex-wrap justify-center sm:justify-start gap-3">
+                <button className="bg-slate-900 hover:bg-black text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl font-bold flex items-center gap-2 transition-all hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] hover:-translate-y-1 text-sm sm:text-base active:scale-95">
+                  <i className="fa-brands fa-apple text-lg sm:text-xl"></i> App Store
                 </button>
-                <button className="bg-slate-50 hover:bg-slate-100 text-slate-900 border border-slate-200 px-6 py-4 rounded-2xl font-bold flex items-center gap-3 transition-all hover:shadow-[0_10px_20px_rgba(0,0,0,0.05)] hover:-translate-y-1">
-                  <i className="fa-brands fa-google-play text-2xl text-[#ff9900]"></i> Google Play
+                <button className="bg-slate-50 hover:bg-slate-100 text-slate-900 border border-slate-200 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl font-bold flex items-center gap-2 transition-all hover:shadow-[0_10px_20px_rgba(0,0,0,0.05)] hover:-translate-y-1 text-sm sm:text-base active:scale-95">
+                  <i className="fa-brands fa-google-play text-lg sm:text-xl text-[#ff9900]"></i> Google Play
                 </button>
               </div>
             </div>
-            <div className="sm:w-[45%] flex justify-center sm:justify-end relative">
+            
+            <div className="w-full sm:w-[45%] flex justify-center sm:justify-end relative order-1 sm:order-2 h-[150px] sm:h-auto">
               {/* Massive Glowing Aura behind the phone */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full blur-[60px] group-hover:scale-125 transition-transform duration-700"></div>
-              {/* Levitating Phone Icon */}
-              <div className="relative animate-float">
-                <i className="fa-solid fa-mobile-screen text-[12rem] text-slate-800 drop-shadow-[0_30px_30px_rgba(0,0,0,0.2)] group-hover:-translate-y-4 transition-transform duration-500 relative z-10"></i>
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 h-6 bg-black/10 blur-[10px] rounded-full"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 sm:w-56 h-40 sm:h-56 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full blur-[40px] sm:blur-[50px] group-hover:scale-125 transition-transform duration-700"></div>
+              {/* Levitating Phone Icon - Scaled down for mobile sanity */}
+              <div className="relative animate-float flex items-center justify-center">
+                <i className="fa-solid fa-mobile-screen text-[7rem] sm:text-[9rem] lg:text-[10rem] text-slate-800 drop-shadow-[0_20px_25px_rgba(0,0,0,0.15)] group-hover:-translate-y-2 transition-transform duration-500 relative z-10"></i>
+                <div className="absolute -bottom-4 sm:-bottom-6 left-1/2 -translate-x-1/2 w-20 sm:w-24 h-4 sm:h-5 bg-black/10 blur-[8px] rounded-full"></div>
               </div>
             </div>
           </div>

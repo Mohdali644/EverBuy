@@ -54,7 +54,7 @@ export default function Orders() {
               shadow-[0_12px_30px_rgba(255,153,0,0.4)] active:scale-95
               
               /* DESKTOP STATE: Static Glassmorphism Pill */
-              md:static md:w-auto md:h-auto md:px-6 md:py-2.5 
+              md:static md:w-auto md:h-auto mt-11 md:px-6 md:py-2.5 
               md:bg-none md:bg-white/10 md:hover:bg-[#fe8505] 
               md:border md:border-white/20 backdrop-blur-md md:shadow-md md:hover:-translate-x-1"
           >
@@ -160,7 +160,7 @@ export default function Orders() {
         ) : (
           <div className="bg-[#0f172a] rounded-[24px] sm:rounded-[32px] p-10 sm:p-16 text-center border border-white/5 shadow-xl mt-4">
             <i className="fa-solid fa-box-open text-5xl sm:text-6xl text-slate-700 mb-5 sm:mb-6 animate-pulse"></i>
-            <h2 className="text-xl sm:text-2xl font-black text-white mb-2 sm:mb-3">No Active Manifests</h2>
+            <h2 className="text-xl sm:text-2xl font-black tracking-wide text-white mb-2 sm:mb-3">No Active Manifests</h2>
             <p className="text-slate-400 font-medium text-sm sm:text-base max-w-md mx-auto">Your telemetry grid is empty. Initialize an order to begin tracking.</p>
           </div>
         )}
