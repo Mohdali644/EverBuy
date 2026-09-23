@@ -106,7 +106,7 @@ export default function CartDrawer() {
                     </h3>
                     <button
                       onClick={() => removeFromCart(index)}
-                      className="text-slate-400 hover:text-red-500 transition-colors shrink-0"
+                      className="text-slate-400 transition-all duration-300 mr-2 origin-bottom hover:scale-125 hover:-translate-y-1 hover:rotate-12 hover:text-red-500 hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.6)] active:scale-90 shrink-0 cursor-pointer"
                       title="Remove Item"
                     >
                       <i className="fa-solid fa-trash-can text-[0.85rem]"></i>

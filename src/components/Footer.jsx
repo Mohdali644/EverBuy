@@ -48,7 +48,7 @@ export default function Footer() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%)]"></div>
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-[#ff9900]/10 to-transparent blur-[80px] pointer-events-none"></div>
       {/* Massive Faded Watermark */}
-      <div className="absolute -bottom-20 -right-10 text-[15rem] font-black text-white/[0.02] tracking-tighter pointer-events-none select-none rotate-[-5deg]">
+      <div className="absolute mb-5 mr-5 -bottom-20 -right-10 text-[15rem] font-black text-white/[0.02] tracking-tighter pointer-events-none select-none rotate-[-5deg]">
         EVERBUY
       </div>
 
@@ -121,7 +121,7 @@ export default function Footer() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)]"></span>
             </div>
-            <span className="text-slate-200 text-xs font-bold tracking-wide">
+            <span className="text-slate-200 text-xs font-bold tracking-wider">
               All Systems Operational
             </span>
           </div>
@@ -192,13 +192,13 @@ export default function Footer() {
             </a>
           </div>
 
-          {/*Back to Top Pill */}
+          {/* Back to Top Pill - Scaled Up */}
           <button
             onClick={scrollToTop}
-            className="group relative overflow-hidden bg-white/5 border border-white/10 hover:border-[#ff9900]/50 text-white px-5 py-2 rounded-full font-bold text-xs transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,153,0,0.2)] flex items-center gap-2"
+            className="group relative overflow-hidden bg-white/5 border border-white/10 hover:border-[#ff9900]/50 text-white px-6 py-3 sm:px-6 sm:py-2 rounded-full font-bold text-sm sm:text-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,153,0,0.2)] flex items-center gap-2.5"
           >
-            <span className="relative z-10">Back to Top</span>
-            <i className="fa-solid fa-arrow-up relative z-10 group-hover:-translate-y-1 transition-transform duration-300 text-[#ff9900]"></i>
+            <span className="relative tracking-wide z-10">Back to Top</span>
+            <i className="fa-solid fa-arrow-up text-base sm:text-lg relative z-10 group-hover:-translate-y-1 transition-transform duration-300 text-[#ff9900]"></i>
             <div className="absolute inset-0 bg-gradient-to-r from-[#ff9900]/20 to-[#ff3300]/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
           </button>
         </div>

@@ -588,8 +588,8 @@ export default function Home() {
           <div className="relative z-10 w-full max-w-[900px] mx-auto px-4 sm:px-8 text-center flex flex-col items-center">
             
             {/* System Online Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[0.65rem] sm:text-xs font-black uppercase tracking-widest mb-6 sm:mb-8 shadow-xl backdrop-blur-md">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#10b981] animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-[0.95rem] sm:text-sm font-black uppercase tracking-widest mb-10 sm:mb-8 shadow-xl backdrop-blur-md">
+              <div className="w-1.5 h-1.5 mr-1 sm:w-2 sm:h-2 rounded-full bg-[#10b981] animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
               System Online
             </div>
             
