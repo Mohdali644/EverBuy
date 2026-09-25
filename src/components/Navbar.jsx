@@ -23,6 +23,13 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
   const [showNav, setShowNav] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [query, setQuery] = useState('');
+  const [searchCategory, setSearchCategory] = useState('All Categories');
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false); 
+
+  const categoryOptions = [
+    "All Categories", "Tech", "Fashion", "Kids", "Beauty", 
+    "Books", "Gaming", "Home & Kitchen", "Automotive"
+  ]; 
   const [results, setResults] = useState([]);
   const [showTooltip, setShowTooltip] = useState(false);
   // NEW: State for the "Next Level" Coming Soon Modal
@@ -194,21 +201,50 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
               </div>
             </div>
 
-            {/* SEARCH BAR - Order Last on Mobile, Auto-expands */}
+          {/* SEARCH BAR - Order Last on Mobile, Auto-expands */}
             <div className="order-last w-full md:mt-0 md:order-none md:w-auto md:flex-grow relative flex items-center h-[44px] md:h-[50px] group z-20">
-              <div className="relative flex w-full h-full bg-white rounded-full overflow-visible p-1 border border-transparent transition-all duration-300 shadow-sm group-focus-within:border-[#ff9900] group-focus-within:ring-4 group-focus-within:ring-[#ff9900]/20">
-                <select className="hidden lg:block h-full min-w-[130px] border-none tracking-wide outline-none bg-slate-300 hover:bg-slate-200 px-4 text-[0.85rem] font-medium text-slate-700 cursor-pointer rounded-full transition-colors duration-300 appearance-none">
-                  <option>All Categories</option>
-                  <option>Tech</option>
-                  <option>Fashion</option>
-                  <option>Kids</option>
-                  <option>Beauty</option>
-                  <option>Books</option>
-                  <option>Gaming</option>
-                  <option>Home & Kitchen</option>
-                  <option>Automotive</option>
-                </select>
+              <div className="relative tracking-wide flex w-full h-full bg-white rounded-full overflow-visible p-1 border border-transparent transition-all duration-300 shadow-sm group-focus-within:border-[#ff9900] group-focus-within:ring-4 group-focus-within:ring-[#ff9900]/20">
+                
+                {/* DYNAMIC WIDTH CATEGORY SELECTOR (Custom React Component) */}
+                <div className="hidden lg:flex relative items-center h-full bg-slate-300 hover:bg-slate-200 rounded-full transition-colors duration-300 shrink-0 z-[60]">
+                  
+                  {/* Custom Toggle Button */}
+                  <button 
+                    onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+                    onBlur={() => setTimeout(() => setIsCategoryOpen(false), 200)}
+                    className="flex tracking-widest items-center gap-2 px-4 h-full cursor-pointer outline-none focus:outline-none"
+                  >
+                    <span className="text-[0.85rem] font-medium tracking-wide text-slate-700 whitespace-nowrap">
+                      {searchCategory}
+                    </span>
+                    <i className={`fa-solid tracking-widest fa-chevron-down text-[0.65rem] mt-[1px] text-slate-800 pt-[1px] transition-transform duration-300 ${isCategoryOpen ? 'rotate-180' : ''}`}></i>
+                  </button>
 
+                  {/* Cinematic Floating Dropdown Menu */}
+                  {isCategoryOpen && (
+                    <div className="absolute top-[calc(100%+12px)] left-0 min-w-[180px] bg-[#131921]/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.6)] overflow-hidden border border-white/10 ring-1 ring-white/5 p-1.5 flex flex-col animate-in fade-in zoom-in-95 duration-200">
+                      {categoryOptions.map((cat) => (
+                        <button
+                          key={cat}
+                          // CHANGED from onClick to onMouseDown
+                          onMouseDown={(e) => {
+                            e.preventDefault(); // Stops the menu from closing before state updates
+                            setSearchCategory(cat);
+                            setIsCategoryOpen(false);
+                          }}
+                          className={`text-left px-4 py-2.5 rounded-xl transition-all duration-200 font-medium text-[0.85rem] ${
+                            searchCategory === cat 
+                              ? 'bg-[#ff9900]/20 mt-1 mb-1 text-[#ff9900]' 
+                              : 'text-slate-300 hover:bg-white/10 hover:text-white'
+                          }`}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                
                 <div className="flex-grow relative flex items-center">
                   <input
                     type="text"
@@ -225,7 +261,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
                 </button>
               </div>
 
-              {/* Dropdown Results */}
+              {/* Dropdown Results (Kept exactly as your original) */}
               {query && (
                 <div className="absolute top-[50px] md:top-[55px] left-0 w-full bg-[#131921]/95 backdrop-blur-3xl rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.6)] z-[9999] overflow-hidden border border-white/10 ring-1 ring-white/5 p-2">
                   {results.length > 0 ? (
