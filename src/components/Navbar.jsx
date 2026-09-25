@@ -202,7 +202,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
             </div>
 
           {/* SEARCH BAR - Order Last on Mobile, Auto-expands */}
-            <div className="order-last w-full md:mt-0 md:order-none md:w-auto md:flex-grow relative flex items-center h-[44px] md:h-[50px] group z-20">
+            <div className="order-last mr-4 ml-4 w-full md:mt-0 md:order-none md:w-auto md:flex-grow relative flex items-center h-[44px] md:h-[50px] group z-20">
               <div className="relative tracking-wide flex w-full h-full bg-white rounded-full overflow-visible p-1 border border-transparent transition-all duration-300 shadow-sm group-focus-within:border-[#ff9900] group-focus-within:ring-4 group-focus-within:ring-[#ff9900]/20">
                 
                 {/* DYNAMIC WIDTH CATEGORY SELECTOR (Custom React Component) */}
@@ -290,7 +290,7 @@ export default function Navbar({ setLocOpen, setSignInOpen, setInfoOpen }) {
             </div>
 
             {/* RIGHT ACTION ICONS - Tightly Grouped */}
-            <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-6">
               {/* PROFILE - Bulletproof Auth Fallbacks */}
               <div className="relative flex items-center">
                 <div
