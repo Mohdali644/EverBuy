@@ -215,7 +215,6 @@ export default function Home() {
     <main className="bg-[#eaeded] min-h-screen pt-[102px]">
       
       {/* 1. HERO CAROUSEL */}
-      {/* 1. HERO CAROUSEL */}
       <section className="relative w-full h-[450px] overflow-hidden flex items-end justify-center mb-5">
         {slides.map((bg, idx) => (
           <div 
@@ -337,14 +336,13 @@ export default function Home() {
             <span className="font-bold text-emerald-400 font-mono text-[1.15rem] md:text-[1.25rem]">{shoppers.toLocaleString()}</span> 
             <span className="text-slate-300 hidden min-[450px]:inline-block font-semibold tracking-wide whitespace-nowrap">people shopping now</span>
           </div>
-          
         </div>
       </section>
 
         <section className="my-10 px-6 max-w-[1400px] mx-auto">
         <div className="flex justify-between items-end mb-2">
           <h2 className="text-[2rem] font-black text-[#0f172a] tracking-tight">Trending Right Now</h2>
-          <a href="#" className="font-bold text-[#ff9900] hover:text-[#e38800] transition-colors">View All <i className="fa-solid fa-arrow-right"></i></a>
+          <a href="#" className="font-bold text-[#ff9900] mb-2 hover:text-[#e38800] transition-colors">View All <i className="fa-solid fa-arrow-right"></i></a>
         </div>
 
         {/* TRENDING GRID */}
