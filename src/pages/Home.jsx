@@ -2,6 +2,92 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
+// --- TRENDING CARD WITH FLY TO CART PHYSICS ---
+  const TrendingCard = ({ product }) => {
+    const { addToCart, cartIconRef } = useCart();
+    const imageRef = useRef(null);
+
+    const handleFlyToCart = (e) => {
+      e.stopPropagation();
+      const startEl = imageRef.current;
+      const targetEl = cartIconRef?.current || document.querySelector('.fa-cart-shopping');
+
+      if (!startEl || !targetEl) {
+        addToCart(product);
+        return;
+      }
+
+      const startRect = startEl.getBoundingClientRect();
+      const clone = startEl.cloneNode(true);
+
+      Object.assign(clone.style, {
+        position: 'fixed', top: `${startRect.top}px`, left: `${startRect.left}px`,
+        width: `${startRect.width}px`, height: `${startRect.height}px`,
+        zIndex: '999999', pointerEvents: 'none', margin: '0',
+        mixBlendMode: 'darken', objectFit: 'contain', transformOrigin: 'center center'
+      });
+
+      document.body.appendChild(clone);
+
+      const targetRect = targetEl.getBoundingClientRect();
+      const deltaX = (targetRect.left + targetRect.width / 2) - (startRect.left + startRect.width / 2);
+      const deltaY = (targetRect.top + targetRect.height / 2) - (startRect.top + startRect.height / 2);
+
+      const flight = clone.animate([
+        { transform: 'translate(0px, 0px) scale(1) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${deltaX}px, ${deltaY}px) scale(0.1) rotate(720deg)`, opacity: 0 }
+      ], {
+        duration: 1200,
+        easing: 'cubic-bezier(0.34, 1.05, 0.64, 1)'
+      });
+
+      flight.onfinish = () => {
+        clone.remove();
+        addToCart(product);
+      };
+    };
+
+    return (
+      <div className="relative bg-white rounded-[20px] p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 ease-out border border-black/5 flex flex-col group cursor-pointer">
+        
+        {product.badge && (
+          <div className={`absolute top-6 left-6 z-10 px-3 py-1.5 rounded-full text-[0.75rem] font-extrabold uppercase tracking-wider text-white ${product.badgeType === 'hot' ? 'bg-gradient-to-br from-red-500 to-orange-500 shadow-[0_4px_10px_rgba(239,68,68,0.3)]' : 'bg-gradient-to-br from-indigo-500 to-sky-500 shadow-[0_4px_10px_rgba(99,102,241,0.3)]'}`}>
+            {product.badge}
+          </div>
+        )}
+        
+        {/* WE COMPLETELY DELETED mix-blend-darken. NO MORE GLITCHES. */}
+        <div className="h-[220px] w-full rounded-xl overflow-hidden flex items-center justify-center">
+          <img 
+            ref={imageRef} 
+            src={product.image} 
+            alt={product.title} 
+            className="max-h-[90%] max-w-[90%] object-contain transition-transform duration-500 ease-out group-hover:scale-110" 
+          />
+        </div>
+        
+        <div className="mt-4 flex flex-col flex-grow">
+          <h3 className="text-[1.15rem] font-extrabold text-[#0f172a] mb-3">{product.title}</h3>
+          <div className="flex justify-between items-center mb-5">
+            <span className="text-[1.3rem] font-black text-[#0f172a]">${product.price.toFixed(2)}</span>
+            <span className="bg-[#fffbeb] text-[#d97706] px-2.5 py-1 rounded-lg text-[0.90rem] font-bold flex items-center gap-1">
+              <i className="fa-solid fa-star"></i> 4.9
+            </span>
+          </div>
+          
+          {/* FIX 3: Added 'relative z-10' to ensure the button has its own rendering layer */}
+          <button 
+            onClick={handleFlyToCart} 
+            className="relative z-10 w-full bg-[#f8fafc] hover:bg-[#0f172a] text-[#0f172a] hover:text-white border border-[#e2e8f0] hover:border-[#0f172a] text-[0.95rem] font-bold p-3.5 rounded-xl transition-colors mt-auto"
+          >
+            Add to Manifest
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+
 export default function Home() {
   const { addToCart, cartIconRef } = useCart();
   const navigate = useNavigate();
@@ -72,30 +158,38 @@ export default function Home() {
 
   const formatTime = (s) => `${Math.floor(s/3600).toString().padStart(2,'0')}:${Math.floor((s%3600)/60).toString().padStart(2,'0')}:${(s%60).toString().padStart(2,'0')}`;
 
-  // --- 4. 3D TILT PHYSICS ---
+  // --- 4. 3D TILT PHYSICS (GLITCH-FREE VERSION) ---
+  const handleEnter = (e) => {
+    const card = e.currentTarget;
+    // 1. Smooth Entry: When mouse first touches, apply a transition so it doesn't snap violently
+    card.style.transition = "transform 0.25s ease-out";
+  };
+
   const handleTilt = (e) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const rotateX = ((y / rect.height) - 0.5) * 10;
-    const rotateY = ((x / rect.width) - 0.5) * -10;
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+    
+    // Reduced the extreme rotation slightly so it feels premium and stable
+    const rotateX = ((y / rect.height) - 0.5) * 8;
+    const rotateY = ((x / rect.width) - 0.5) * -8;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+
+    // 2. Disable transition mid-movement so the card tracks the mouse instantly without muddy lag
+    setTimeout(() => {
+      if (card.matches(':hover')) {
+        card.style.transition = "none";
+      }
+    }, 250);
   };
 
   const handleLeave = (e) => {
     const card = e.currentTarget;
-    
-    // 1. Temporarily turn on a smooth CSS transition
-    card.style.transition = "transform 0.3s ease-out"; 
-    
-    // 2. Snap the card back to flat
+    // 3. Smooth Exit: Elegantly float back to 0 when the mouse leaves
+    card.style.transition = "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)";
     card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
-    
-    // 3. Turn the CSS transition back off after 300ms so it doesn't stutter on the next hover
-    setTimeout(() => {
-      card.style.transition = "";
-    }, 300);
   };
 
   // --- DATA ---
@@ -116,72 +210,6 @@ export default function Home() {
     { id: 3, title: "Smart Home Hub V2", price: 89.50, image: "https://img.freepik.com/premium-photo/smart-home-hub-controlling-various-connected-devices_1314467-151989.jpg" },
     { id: 4, title: "Apple Airpods", price: 145.00, image: "https://images.unsplash.com/photo-1605464315542-bda3e2f4e605?w=400", badge: "High Demand", badgeType: "hot" }
   ];
-
-  // --- TRENDING CARD WITH FLY TO CART PHYSICS ---
-  const TrendingCard = ({ product }) => {
-    const [isFlying, setIsFlying] = useState(false);
-    const [flightStyle, setFlightStyle] = useState({});
-    const imageRef = useRef(null);
-
-    const handleFlyToCart = (e) => {
-      e.stopPropagation();
-      if (!imageRef.current || !cartIconRef.current) {
-        addToCart(product); // Fallback if refs fail
-        return;
-      }
-
-      const startRect = imageRef.current.getBoundingClientRect();
-      const targetRect = cartIconRef.current.getBoundingClientRect();
-
-      setIsFlying(true);
-      setFlightStyle({
-        position: 'fixed', top: startRect.top, left: startRect.left, width: startRect.width, height: startRect.height,
-        borderRadius: '12px', zIndex: 999999, pointerEvents: 'none',
-        transition: 'all 0.8s cubic-bezier(0.5, -0.5, 0.75, 1)' 
-      });
-
-      setTimeout(() => {
-        setFlightStyle(prev => ({
-          ...prev, top: targetRect.top, left: targetRect.left, width: '40px', height: '40px', opacity: 0.2, borderRadius: '50%', transform: 'scale(0.5)'
-        }));
-      }, 10);
-
-      setTimeout(() => {
-        setIsFlying(false);
-        addToCart(product);
-      }, 800);
-    };
-
-    return (
-      <div 
-        onMouseMove={handleTilt}
-        onMouseLeave={handleLeave}
-        className="relative bg-white rounded-[20px] p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-black/5 ease-out flex flex-col group cursor-pointer"
-      >
-        {product.badge && (
-          <div className={`absolute top-6 left-6 z-10 px-3 py-1.5 rounded-full text-[0.75rem] font-extrabold uppercase tracking-wider text-white ${product.badgeType === 'hot' ? 'bg-gradient-to-br from-red-500 to-orange-500 shadow-[0_4px_10px_rgba(239,68,68,0.3)]' : 'bg-gradient-to-br from-indigo-500 to-sky-500 shadow-[0_4px_10px_rgba(99,102,241,0.3)]'}`}>
-            {product.badge}
-          </div>
-        )}
-        <img ref={imageRef} src={product.image} className="h-[220px] w-full object-contain rounded-xl block group-hover: mix-blend-darken" alt={product.title} />
-        
-        <div className="mt-4 flex flex-col flex-grow">
-          <h3 className="text-[1.15rem] font-extrabold text-[#0f172a] mb-3">{product.title}</h3>
-          <div className="flex justify-between items-center mb-5">
-            <span className="text-[1.3rem] font-black text-[#0f172a]">${product.price.toFixed(2)}</span>
-            <span className="bg-[#fffbeb] text-[#d97706] px-2.5 py-1 rounded-lg text-[0.90rem] font-bold flex items-center gap-1">
-              <i className="fa-solid fa-star"></i> 4.9
-            </span>
-          </div>
-          <button onClick={handleFlyToCart} className="w-full bg-[#f8fafc] hover:bg-[#0f172a] text-[#0f172a] hover:text-white border border-[#e2e8f0] hover:border-[#0f172a] text-[0.95rem] font-bold p-3.5 rounded-xl transition-colors mt-auto">
-            Add to Manifest
-          </button>
-        </div>
-        
-        {isFlying && <img src={product.image} style={flightStyle} alt="flying clone" className="shadow-2xl mix-blend-darken bg-white" />}
-      </div>
-    );
-  };
 
   return (
     <main className="bg-[#eaeded] min-h-screen pt-[102px]">
@@ -234,6 +262,7 @@ export default function Home() {
             key={i} 
             // FIX: Added /category/ to the path so it matches App.jsx
             onClick={() => navigate(`/category/${cat.id}`)}
+            onMouseEnter={handleEnter}
             onMouseMove={handleTilt}
             onMouseLeave={handleLeave}
             className="bg-white p-5 rounded-[20px] shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-transform duration-200 ease-out flex flex-col cursor-pointer"
@@ -385,7 +414,7 @@ export default function Home() {
             ]).map((testimonial) => (
               <div 
                 key={testimonial.id} 
-                className="w-[350px] md:w-[400px] bg-white/5 backdrop-blur-md p-6 rounded-3xl border border-white/10 flex flex-col gap-5 transition-all duration-300 hover:bg-white/10 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(255,153,0,0.15)] hover:border-[#ff9900]/30 cursor-grab active:cursor-grabbing shrink-0"
+                className="w-[350px] md:w-[400px] bg-white/5 backdrop-blur-md p-6 rounded-3xl border border-white/10 flex flex-col gap-5 transition-all duration-300 hover:bg-white/10 hover:-translate-x-1 hover:shadow-[0_15px_40px_rgba(255,153,0,0.15)] hover:border-[#ff9900]/30 cursor-grab active:cursor-grabbing shrink-0"
               >
                 {/* Top Row: Stars & Verified Badge */}
                 <div className="flex justify-between items-center">

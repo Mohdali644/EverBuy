@@ -7,39 +7,60 @@ export default function ProductCard({ title, price, image }) {
   // Feature 10: Scarcity Engine (Random stock left)
   const [stockLeft] = useState(() => Math.random() > 0.7 ? Math.floor(Math.random() * 4) + 1 : null);
   
-  // Feature 4: Fly-to-Cart Physics Engine
-  const [isFlying, setIsFlying] = useState(false);
-  const [flightStyle, setFlightStyle] = useState({});
   const imageRef = useRef(null);
 
   const handleFlyToCart = () => {
-    if (!imageRef.current || !cartIconRef.current) return;
+    const startEl = imageRef.current;
+    // Lock onto the Cart Icon in the Navbar using the context ref
+    const targetEl = cartIconRef?.current || document.querySelector('.fa-cart-shopping');
 
-    const startRect = imageRef.current.getBoundingClientRect();
-    const targetRect = cartIconRef.current.getBoundingClientRect();
+    // Failsafe: If elements aren't found, just add to cart instantly
+    if (!startEl || !targetEl) {
+      addToCart({ title, price, image });
+      return;
+    }
 
-    setIsFlying(true);
-    setFlightStyle({
+    // 1. CLONE THE IMAGE TO ESCAPE CSS CONFLICTS
+    const startRect = startEl.getBoundingClientRect();
+    const clone = startEl.cloneNode(true);
+
+    // Apply raw inline styles to the clone so it completely ignores Tailwind
+    Object.assign(clone.style, {
       position: 'fixed',
-      top: startRect.top, left: startRect.left,
-      width: startRect.width, height: startRect.height,
-      borderRadius: '12px', zIndex: 999999, pointerEvents: 'none',
-      transition: 'all 0.8s cubic-bezier(0.5, -0.5, 0.75, 1)' 
+      top: `${startRect.top}px`,
+      left: `${startRect.left}px`,
+      width: `${startRect.width}px`,
+      height: `${startRect.height}px`,
+      zIndex: '999999',
+      pointerEvents: 'none',
+      margin: '0',
+      mixBlendMode: 'darken',
+      objectFit: 'contain',
+      transformOrigin: 'center center'
     });
 
-    setTimeout(() => {
-      setFlightStyle(prev => ({
-        ...prev,
-        top: targetRect.top + (targetRect.height / 2) - 25,
-        left: targetRect.left + (targetRect.width / 2) - 25,
-        width: '50px', height: '50px', opacity: 0.3, borderRadius: '50%', transform: 'scale(0.5)'
-      }));
-    }, 10);
+    // Inject the clone directly into the HTML body
+    document.body.appendChild(clone);
 
-    setTimeout(() => {
-      setIsFlying(false);
-      addToCart({ title, price, image });
-    }, 800);
+    // 2. CALCULATE EXACT CENTER-TO-CENTER DISTANCE
+    const targetRect = targetEl.getBoundingClientRect();
+    const deltaX = (targetRect.left + targetRect.width / 2) - (startRect.left + startRect.width / 2);
+    const deltaY = (targetRect.top + targetRect.height / 2) - (startRect.top + startRect.height / 2);
+
+    // 3. LAUNCH HARDWARE-ACCELERATED PHYSICS
+    const flight = clone.animate([
+      { transform: 'translate(0px, 0px) scale(1) rotate(0deg)', opacity: 1 },
+      { transform: `translate(${deltaX}px, ${deltaY}px) scale(0.1) rotate(720deg)`, opacity: 0 }
+    ], {
+      duration: 1600,
+      easing: 'cubic-bezier(0.34, 1.05, 0.64, 1)' // Premium cinematic curve
+    });
+
+    // 4. CLEANUP & ADD TO CART
+    flight.onfinish = () => {
+      clone.remove(); // Destroy the clone when it hits the cart
+      addToCart({ title, price, image }); // Add item to the Manifest data
+    };
   };
 
   return (
@@ -63,8 +84,6 @@ export default function ProductCard({ title, price, image }) {
           Add to Manifest
         </button>
       </div>
-
-      {isFlying && <img src={image} style={flightStyle} alt="flying clone" className="shadow-2xl mix-blend-darken bg-white" />}
     </div>
   );
 }
