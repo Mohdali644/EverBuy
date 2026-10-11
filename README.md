@@ -1,8 +1,8 @@
 # 📦 EverBuy | Next-Generation Digital Storefront
 
-[![UI/UX](https://img.shields.io/badge/UI%2FUX-Ultra_Modern-8A2BE2?style=for-the-badge)](https://github.com/Mohdali644/EverBuy)
-[![Frontend](https://img.shields.io/badge/Frontend-React_18-00D8FF?style=for-the-badge&logo=react&logoColor=black)](#)
-[![Architecture](https://img.shields.io/badge/Architecture-Scalable-4CAF50?style=for-the-badge)](#)
+[![UI/UX](https://img.shields.io/badge/UI%2FUX-Ultra_Modern-8a2be2?style=for-the-badge)](https://github.com/Mohdali644/EverBuy)
+[![Frontend](https://img.shields.io/badge/Frontend-React_18-00d8ff?style=for-the-badge&logo=react&logoColor=black)](#)
+[![Architecture](https://img.shields.io/badge/Architecture-Scalable-4caf50?style=for-the-badge)](#)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](#)
 
 > An immersive, high-performance web platform engineered with state-of-the-art UI/UX principles. EverBuy merges complex global state management, live engagement engines, and extreme liquid-responsive design to create a cinematic digital shopping environment.
