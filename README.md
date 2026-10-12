@@ -91,7 +91,8 @@ cd EverBuy
 npm install
 npm run dev
 ```
-Navigate to http://localhost:5173 in your browser.
+
+#### Navigate to http://localhost:5173 in your browser.
 
 ## 🧠 Development Philosophy
 #### The EverBuy architecture was engineered to operate in the vacuum of modern web performance—shedding gravitational bloat in favor of pure, accelerated execution.
