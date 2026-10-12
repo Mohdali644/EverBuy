@@ -75,19 +75,19 @@ everbuy/
 
 Deploying EverBuy locally requires Node.js. The architecture is built on modern React fundamentals for maximum compatibility and speed.
 
-1. Clone the Repository
+### 1. Clone the Repository
 
 ```Bash
 git clone [https://github.com/Mohdali644/EverBuy.git](https://github.com/Mohdali644/EverBuy.git)
 ```
-2. Navigate to the Workspace
+### 2. Navigate to the Workspace
 
 ```Bash
 cd EverBuy
 ```
-3. Boot the Development Environment To fully experience the application and its dynamic routing, install the dependencies and serve the project via Vite:
+### 3. Boot the Development Environment To fully experience the application and its dynamic routing, install the dependencies and serve the project via Vite:
+
 ```
-Bash
 npm install
 npm run dev
 ```
